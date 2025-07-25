@@ -35,7 +35,7 @@
 
     .marker {
       position: absolute;
-      font-size: 20px;
+      font-size: 14px;
       cursor: pointer;
     }
 
@@ -216,13 +216,15 @@
     }
   }
 
-  function filterMarkers() {
-    const query = document.getElementById('search').value.toLowerCase();
-    document.querySelectorAll('.marker').forEach(el => {
-      const match = el.dataset.name.includes(query) || el.dataset.description.includes(query);
-      el.style.display = match ? 'block' : 'none';
-    });
-  }
+function filterMarkers() {
+  const query = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.marker').forEach(el => {
+    const name = el.dataset.name?.toLowerCase() || '';
+    const description = el.dataset.description?.toLowerCase() || '';
+    const match = name.includes(query) || description.includes(query);
+    el.style.display = match ? 'block' : 'none';
+  });
+}
 
   function toggleCategory(cat) {
     const elements = document.querySelectorAll(`.marker[data-category="${cat}"]`);

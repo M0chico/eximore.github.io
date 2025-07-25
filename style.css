@@ -46,20 +46,62 @@ body, html {
   max-width: 1000px;
 }
 
-.palier-card {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  backdrop-filter: blur(4px);
-  padding: 2rem;
-  border-radius: 1rem;
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
 .palier-card:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
+}
+.hub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.hub-container h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.palier-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s, background 0.3s;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.palier-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+footer {
+  margin: 3rem 0 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+footer a {
+  color: #00afff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }

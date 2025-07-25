@@ -1,0 +1,314 @@
+[
+  {
+    "x": 294.9090957641601,
+    "y": 400.29999931653333,
+    "name": "Sanglier/Pumba",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 379.9090957641601,
+    "y": 441.1333326498667,
+    "name": "Loup/Albal",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 480.7424290974934,
+    "y": 426.9666659832,
+    "name": "Nephentes/Plante Dévoreuse",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 234.07576243082679,
+    "y": 350.29999931653333,
+    "name": "Tréant",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 124.90909576416014,
+    "y": 351.9666659832,
+    "name": "Slime",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 414.9090957641601,
+    "y": 510.29999931653333,
+    "name": "Squelette",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 569.0757624308268,
+    "y": 451.9666659832,
+    "name": "Bandit",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 471.5757624308267,
+    "y": 466.9666659832,
+    "name": "Ika",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 224.90909576416013,
+    "y": 133.63333264986673,
+    "name": "Araignée",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 574.90909576416,
+    "y": 104.46666598320006,
+    "name": "Cerf",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 556.5959777832031,
+    "y": 210.88321685791016,
+    "name": "Monstre des Montagnes",
+    "category": "mob",
+    "description": "Golem/Spirite/Ours de Glace",
+    "coords": ""
+  },
+  {
+    "x": 360.5959777832031,
+    "y": 395.88321685791016,
+    "name": "Mine",
+    "category": "ressource",
+    "description": "Charbon/Cuivre/Fer",
+    "coords": "x 2400 z 3500"
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 399.88321685791016,
+    "name": "Bois",
+    "category": "ressource",
+    "description": "Chêne",
+    "coords": ""
+  },
+  {
+    "x": 364.5959777832031,
+    "y": 491.88321685791016,
+    "name": "Bois",
+    "category": "ressource",
+    "description": "Chêne",
+    "coords": ""
+  },
+  {
+    "x": 355.5959777832031,
+    "y": 410.88321685791016,
+    "name": "Agriculture",
+    "category": "ressource",
+    "description": "Blé/Allium",
+    "coords": ""
+  },
+  {
+    "x": 288.5959777832031,
+    "y": 490.88321685791016,
+    "name": "Ville de Départ",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 484.5959777832031,
+    "y": 159.88321685791016,
+    "name": "Tolbana",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 452.5959777832031,
+    "y": 414.88321685791016,
+    "name": "Mizunari",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 112.59597778320312,
+    "y": 263.88321685791016,
+    "name": "Jardin des Géants",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 309.5959777832031,
+    "y": 59.883216857910156,
+    "name": "Candelia",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 348.5959777832031,
+    "y": 355.88321685791016,
+    "name": "Quartier OG",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 251.59597778320312,
+    "y": 383.88321685791016,
+    "name": "Hanaka",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 575.5959777832031,
+    "y": 442.88321685791016,
+    "name": "Mine de Geldorak",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 117.59597778320312,
+    "y": 337.88321685791016,
+    "name": "Vallhat",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 416.5959777832031,
+    "y": 328.88321685791016,
+    "name": "CastelBrume",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 257.5959777832031,
+    "y": 203.88321685791016,
+    "name": "Virelune",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 260.5959777832031,
+    "y": 391.88321685791016,
+    "name": "Genzo/Bartok/Greta/Soeur-Therra",
+    "category": "quest",
+    "description": "Rina/Maya/Toban",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 458.5959777832031,
+    "y": 421.88321685791016,
+    "name": "Michelle/Martine/Elwyn/Louise/Phares",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 125.59597778320312,
+    "y": 345.88321685791016,
+    "name": "Saya/Ayaka/Daiki",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 120.59597778320312,
+    "y": 267.88321685791016,
+    "name": "Zebulgarath",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 267.5959777832031,
+    "y": 207.88321685791016,
+    "name": "Juliette/Luc",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 316.5959777832031,
+    "y": 59.883216857910156,
+    "name": "Yannis/Gilmar/Tomoko",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 290.5959777832031,
+    "y": 83.88321685791016,
+    "name": "Gilbert",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 477.5959777832031,
+    "y": 320.88321685791016,
+    "name": "Jean/Corentin",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 342.5959777832031,
+    "y": 497.88321685791016,
+    "name": "Varne/Elwen/Milla",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 549.8832168579102,
+    "name": "Inari/Orin",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 250.59597778320312,
+    "y": 494.88321685791016,
+    "name": "Rikyu/Bunta/Meiko/Saria",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 453.88321685791016,
+    "name": "Tilda/Lila",
+    "category": "quest",
+    "description": "",
+    "coords": "Voir GitBook"
+  },
+  {
+    "x": 238.59597778320312,
+    "y": 215.88321685791016,
+    "name": "Poisson Requin/Sea Void",
+    "category": "mob",
+    "description": "",
+    "coords": ""
+  }
+]

@@ -11,13 +11,30 @@
   <div class="hub-container">
     <h1>Paliers</h1>
     <div class="grid-container">
-      <a class="palier-card" href="carte1/index.html">Carte 1</a>
-      <a class="palier-card" href="carte2/index.html">Carte 2</a>
-      <a class="palier-card" href="carte3/index.html">Carte 3</a>
-      <a class="palier-card" href="carte4/index.html">Carte 4</a>
-      <a class="palier-card" href="carte5/index.html">Carte 5</a>
-      <!-- Ajoute plus de cartes ici -->
+      <!-- Paliers générés automatiquement via JavaScript -->
     </div>
   </div>
+
+  <footer>
+    Fait par mochico__ • <a href="https://discord.gg/dnPeKBPjgQ" target="_blank">Rejoindre notre guilde Discord</a>
+  </footer>
+
+  <script>
+    const grid = document.querySelector('.grid-container');
+    for (let i = 1; i <= 100; i++) {
+      const card = document.createElement('a');
+      const label = `Palier ${i}` + (i >= 2 ? ' (soon)' : '');
+      card.textContent = label;
+      card.className = 'palier-card';
+      if (i <= 1) {
+        card.href = `carte${i}/index.html`;
+      } else {
+        card.href = '#';
+        card.style.pointerEvents = 'none';
+        card.style.opacity = '0.6';
+      }
+      grid.appendChild(card);
+    }
+  </script>
 </body>
 </html>

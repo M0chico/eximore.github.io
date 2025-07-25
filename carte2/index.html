@@ -1,12 +1,399 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Carte 1</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Carte Interactive Multi-cartes</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #map-container {
+      position: relative;
+      width: 1000px;
+      height: 700px;
+      overflow: hidden;
+    }
+
+    #map {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 800px;
+      height: 600px;
+      transform-origin: 0 0;
+      position: absolute;
+    }
+
+    .marker {
+      position: absolute;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .marker[data-category="mob"]  { color: red; }
+    .marker[data-category="quest"] { color: yellow; }
+    .marker[data-category="ressource"] { color: lime; }
+    .marker[data-category="lieu"] { color: cyan; }
+
+    .marker:hover::after {
+      content: attr(data-name) "\A━━━━━━━━━━━━━━\A" attr(data-description) "\A━━━━━━━━━━━━━━\A" attr(data-coords);
+      white-space: pre;
+      position: absolute;
+      background: rgba(20,20,20,0.95);
+      color: #eee;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+      top: 30px;
+      left: 10px;
+      width: 220px;
+      z-index: 1000;
+      font-size: 14px;
+      font-family: monospace;
+    }
+
+    
+    #sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #222;
+      padding: 10px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    #sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    #toggle-btn {
+      position: absolute;
+      top: 10px;
+      left: 260px;
+      z-index: 1000;
+      background: #444;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    .filter-btn {
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    #mod-code {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 100px;
+      z-index: 1000;
+    }
+
+    .mod-only {
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+<div id="sidebar">
+  <button onclick="window.location.href='../index.html'" style="margin-bottom: 1rem; padding: 0.5rem 1rem; border-radius: 8px; background: #333; color: white; border: none; cursor: pointer;">
+    ← Revenir au HUB
+  </button>
+
+  <div class="mod-only">
+    <label><strong>Emoji :</strong></label>
+    <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+      <span id="selected-emoji" style="font-size: 20px;">❓</span>
+      <button type="button" onclick="showEmojiPicker()">Choisir un emoji</button>
+    </div>
+
+    <input id="emoji-search" placeholder="🔍 Rechercher un emoji..." style="margin-top: 6px; width: 100%;" oninput="filterEmojiPicker()" />
+
+    <div id="emoji-picker"
+         style="display: flex; flex-wrap: wrap; max-height: 120px; overflow-y: auto; margin-top: 6px; gap: 4px; border: 1px solid #ccc; padding: 4px; border-radius: 4px;">
+    </div>
+  </div>
+
+
+  <h3 class="mod-only">Ajouter un marqueur</h3>
+  <input class="mod-only" id="name" placeholder="Nom" />
+  <select class="mod-only" id="category">
+    <option value="mob">Mob</option>
+    <option value="quest">Quête</option>
+    <option value="ressource">Ressource</option>
+    <option value="lieu">Lieu</option>
+  </select>
+  <input class="mod-only" id="description" placeholder="Description" />
+  <input class="mod-only" id="coords" placeholder="Coordonnées (x y z)" />
+  <button class="mod-only" onclick="enablePlacing()">Placer un marqueur</button>
+  <button class="mod-only" onclick="exportMarkers()">Exporter JSON</button>
+
+  <h4>Filtres :</h4>
+  <button class="filter-btn" onclick="toggleCategory('mob')">Afficher/Masquer Mob</button>
+  <button class="filter-btn" onclick="toggleCategory('quest')">Afficher/Masquer Quête</button>
+  <button class="filter-btn" onclick="toggleCategory('ressource')">Afficher/Masquer Ressource</button>
+  <button class="filter-btn" onclick="toggleCategory('lieu')">Afficher/Masquer Lieu</button>
+  <hr />
+  <input id="search" placeholder="Rechercher..." oninput="filterMarkers()" />
+  <button onclick="resetView()">🔄 Recentrer</button>
+</div>
+
+<div id="toggle-btn" onclick="toggleSidebar()">≡</div>
+<input id="mod-code" placeholder="Code admin" />
+<div id="map-container">
   <div id="map"></div>
-  <script src="script.js"></script>
+</div>
+
+<script>
+  const map = document.getElementById('map');
+  const mapSelector = document.getElementById('map-selector');
+
+  // Mets ici tes 25 URLs des cartes
+  const mapUrls = [
+    'carte2.png', // exemple palier 1
+
+  ];
+  let isLoading = false;
+  let allEmojis = []; // Tous les emojis chargés
+  let currentMapIndex = 0;
+  let placing = false;
+  let zoom = 1;
+  let offsetX = 0;
+  let offsetY = 0;
+  let hiddenCategories = new Set();
+  let markers = [];
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('collapsed');
+  }
+
+  function enablePlacing() {
+    placing = true;
+  }
+
+function addMarker(x, y, name, category, description, coords = '', emoji = null) {
+  const icon = emoji || (document.getElementById('selected-emoji')?.textContent || '❓');
+
+  const el = document.createElement('div');
+  el.className = 'marker';
+  el.style.left = `${x}px`;
+  el.style.top = `${y}px`;
+  el.dataset.category = category;
+  el.dataset.name = name.toLowerCase();
+  el.dataset.description = description?.toLowerCase?.() || '';
+  el.dataset.coords = coords;
+  el.setAttribute('data-name', name);
+  el.setAttribute('data-description', description);
+  el.setAttribute('data-coords', coords);
+  el.textContent = icon;
+
+  el.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    map.removeChild(el);
+    markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
+    saveMarkers();
+  });
+
+  map.appendChild(el);
+
+  if (!isLoading) {
+    markers.push({ x, y, name, category, description, coords, emoji: icon, map: currentMapIndex });
+    saveMarkers();
+  }
+}
+
+  
+
+
+  // Chargement des emojis depuis GitHub (gemoji)
+async function fetchEmojis() {
+  const url = 'https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json';
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+async function showEmojiPicker() {
+  const picker = document.getElementById('emoji-picker');
+  picker.innerHTML = 'Chargement...';
+
+  try {
+    allEmojis = await fetchEmojis(); // on stocke tous les emojis pour la recherche
+    renderEmojiPicker(allEmojis);
+  } catch (err) {
+    picker.innerHTML = 'Erreur de chargement des emojis.';
+    console.error(err);
+  }
+}
+
+function renderEmojiPicker(emojis) {
+  const picker = document.getElementById('emoji-picker');
+  picker.innerHTML = '';
+
+  emojis.forEach(e => {
+    const btn = document.createElement('button');
+    btn.textContent = e.emoji;
+    btn.style.fontSize = '18px';
+    btn.style.border = 'none';
+    btn.style.background = 'none';
+    btn.style.cursor = 'pointer';
+    btn.title = e.description || '';
+    btn.onclick = () => {
+      document.getElementById('selected-emoji').textContent = e.emoji;
+    };
+    picker.appendChild(btn);
+  });
+}
+
+function filterEmojiPicker() {
+  const search = document.getElementById('emoji-search').value.toLowerCase();
+  const filtered = allEmojis.filter(e => e.description && e.description.toLowerCase().includes(search));
+  renderEmojiPicker(filtered);
+}
+
+function filterMarkers() {
+  const query = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.marker').forEach(el => {
+    const name = el.dataset.name?.toLowerCase() || '';
+    const description = el.dataset.description?.toLowerCase() || '';
+    const match = name.includes(query) || description.includes(query);
+    el.style.display = match ? 'block' : 'none';
+  });
+}
+
+  function toggleCategory(cat) {
+    const elements = document.querySelectorAll(`.marker[data-category="${cat}"]`);
+    if (hiddenCategories.has(cat)) {
+      elements.forEach(el => el.style.display = 'block');
+      hiddenCategories.delete(cat);
+    } else {
+      elements.forEach(el => el.style.display = 'none');
+      hiddenCategories.add(cat);
+    }
+  }
+
+  function resetView() {
+    zoom = 1;
+    offsetX = 0;
+    offsetY = 0;
+    map.style.transform = `translate(0px, 0px) scale(1)`;
+  }
+
+
+  map.addEventListener('click', function(e) {
+    if (!placing) return;
+    const rect = map.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / zoom;
+    const y = (e.clientY - rect.top) / zoom;
+
+    const name = document.getElementById('name').value;
+    const category = document.getElementById('category').value;
+    const description = document.getElementById('description').value;
+    const coords = document.getElementById('coords').value;
+
+    if (!name) {
+      alert('Merci de saisir un nom pour le marqueur');
+      return;
+    }
+
+    const markerData = { x, y, name, category, description, coords };
+    markers.push(markerData);
+    addMarker(x, y, name, category, description, coords);
+    saveMarkers();
+    placing = false;
+  });
+
+  map.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    const rect = map.getBoundingClientRect();
+    const mouseX = (e.clientX - rect.left);
+    const mouseY = (e.clientY - rect.top);
+    const prevZoom = zoom;
+    const zoomAmount = e.deltaY < 0 ? 0.1 : -0.1;
+    zoom = Math.min(3, Math.max(1, zoom + zoomAmount));
+
+    const dx = mouseX / prevZoom;
+    const dy = mouseY / prevZoom;
+    offsetX -= dx * (zoom - prevZoom);
+    offsetY -= dy * (zoom - prevZoom);
+    map.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
+  }, { passive: false });
+
+function exportMarkers() {
+  const blob = new Blob([JSON.stringify(markers, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'marqueurs.json'; // <-- extension ajoutée
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+
+// ✅ Fonction pour charger automatiquement le fichier JSON
+function loadMarkersFromFile() {
+  isLoading = true;
+  fetch('marqueurs.json')
+    .then(response => {
+      if (!response.ok) throw new Error("Erreur lors du chargement du fichier JSON");
+      return response.json();
+    })
+    .then(data => {
+      markers = data;
+      map.innerHTML = '';
+      markers.forEach(m => {
+        addMarker(m.x, m.y, m.name, m.category, m.description, m.coords, m.emoji);
+      });
+      isLoading = false;
+    })
+    .catch(err => {
+      alert("Impossible de charger les marqueurs : " + err.message);
+      isLoading = false;
+    });
+}
+
+
+window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
+
+
+  
+  document.getElementById('mod-code').addEventListener('change', function () {
+    if (this.value === '6969') {
+      document.querySelectorAll('.mod-only').forEach(el => el.style.display = 'block');
+      this.style.display = 'none';
+    } else {
+      alert('Code incorrect');
+    }
+  });
+
+  // Initialisation au chargement
+  document.addEventListener('DOMContentLoaded', () => {
+    map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
+  });
+</script>
+
 </body>
 </html>
