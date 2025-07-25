@@ -211,6 +211,7 @@
     'carte24.png',
     'carte25.png',
   ];
+  
   let currentMapIndex = 0;
   let placing = false;
   let zoom = 1;
@@ -256,17 +257,9 @@
     map.appendChild(el);
   }
 
-  function saveMarkers() {
-    // Sauvegarde dans localStorage en groupant par carte
-    const allMarkers = JSON.parse(localStorage.getItem('allMarkers')) || {};
-    allMarkers[currentMapIndex] = markers;
-    localStorage.setItem('allMarkers', JSON.stringify(allMarkers));
-  }
-
   function loadMarkersForCurrentMap() {
     markers = [];
     map.innerHTML = '';
-    const allMarkers = JSON.parse(localStorage.getItem('allMarkers')) || {};
     if (allMarkers[currentMapIndex]) {
       markers = allMarkers[currentMapIndex];
       markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
@@ -379,6 +372,27 @@
     reader.readAsText(file);
   }
 
+// ✅ Fonction pour charger automatiquement le fichier JSON
+function loadMarkersFromFile() {
+  fetch('marqueurs.json')
+    .then(response => {
+      if (!response.ok) throw new Error("Erreur lors du chargement du fichier JSON");
+      return response.json();
+    })
+    .then(data => {
+      markers = data;
+      map.innerHTML = ''; // Vide la carte
+      markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
+    })
+    .catch(err => {
+      alert("Impossible de charger les marqueurs : " + err.message);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
+
+
+  
   document.getElementById('mod-code').addEventListener('change', function () {
     if (this.value === '6969') {
       document.querySelectorAll('.mod-only').forEach(el => el.style.display = 'block');
