@@ -6,7 +6,7 @@
     'carte1.png', // exemple palier 1
 
   ];
-  
+  let isMod = false;
   let currentMapIndex = 0;
   let placing = false;
   let zoom = 1;
@@ -44,6 +44,10 @@
     el.setAttribute('data-coords', coords);
     el.textContent = icon;
     el.addEventListener('contextmenu', e => {
+        if (!isMod) {
+    alert("Cette action est réservée aux modérateurs.");
+    return;
+  }
       e.preventDefault();
       map.removeChild(el);
       markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
@@ -52,14 +56,6 @@
     map.appendChild(el);
   }
 
-  function loadMarkersForCurrentMap() {
-    markers = [];
-    map.innerHTML = '';
-    if (allMarkers[currentMapIndex]) {
-      markers = allMarkers[currentMapIndex];
-      markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
-    }
-  }
 
 function filterMarkers() {
   const query = document.getElementById('search').value.toLowerCase();
@@ -89,19 +85,6 @@ function filterMarkers() {
     map.style.transform = `translate(0px, 0px) scale(1)`;
   }
 
-  function changeMap() {
-    const select = document.getElementById('map-selector');
-    currentMapIndex = parseInt(select.value);
-
-    // Change le fond de la carte
-    map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
-
-    // Recharge les marqueurs de la carte courante
-    loadMarkersForCurrentMap();
-
-    // Reset vue (optionnel)
-    resetView();
-  }
 
   map.addEventListener('click', function(e) {
     if (!placing) return;
@@ -163,13 +146,50 @@ function loadMarkersFromFile() {
     })
     .then(data => {
       markers = data;
-      map.innerHTML = ''; // Vide la carte
-      markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
+      map.innerHTML = '';
+      markers.forEach(m => {
+        addMarker(m.x, m.y, m.name, m.category, m.description, m.coords, m.emoji);
+        // on ajoute une propriété temporaire pour associer l'image plus tard
+        m._internalId = `${m.name}_${m.x}_${m.y}`; // identifiant unique
+      });
+
+      // Activer les clics pour afficher les détails
+      document.querySelectorAll('.marker').forEach(markerEl => {
+        const name = markerEl.dataset.name;
+        const x = parseFloat(markerEl.style.left);
+        const y = parseFloat(markerEl.style.top);
+        const match = markers.find(m =>
+          m.name === name &&
+          Math.abs(m.x - x) < 1 &&
+          Math.abs(m.y - y) < 1
+        );
+        if (match) {
+          markerEl.addEventListener('click', () => showMarkerDetails(match));
+        }
+      });
     })
     .catch(err => {
       alert("Impossible de charger les marqueurs : " + err.message);
     });
 }
+
+function showMarkerDetails(marker) {
+  // Mettre à jour les infos dans le panneau
+  document.getElementById('marker-title').textContent = marker.name;
+  document.getElementById('marker-description').textContent = marker.description || '';
+  document.getElementById('marker-coords').textContent = marker.coords || '';
+
+  // Charger une image correspondant au nom du marqueur (si elle existe)
+  const imgEl = document.getElementById('marker-image');
+  const imagePath = `images/${marker.name}.png`;  // Mets tes images dans le dossier /images/
+  imgEl.src = imagePath;
+  imgEl.onerror = () => imgEl.style.display = 'none';  // Cache si introuvable
+  imgEl.onload = () => imgEl.style.display = 'block';
+
+  // Ouvrir le panneau
+  document.getElementById('marker-panel').classList.add('open');
+}
+
 
 window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
 
@@ -177,6 +197,7 @@ window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
   
   document.getElementById('mod-code').addEventListener('change', function () {
     if (this.value === '6969') {
+      isMod = true;
       document.querySelectorAll('.mod-only').forEach(el => el.style.display = 'block');
       this.style.display = 'none';
     } else {
@@ -184,8 +205,23 @@ window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
     }
   });
 
-  // Initialisation au chargement
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById('close-marker-panel');
+  const panel = document.getElementById('marker-panel');
+
+  if (closeBtn && panel) {
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+    });
+  } else {
+    console.warn('Bouton fermeture ou panneau introuvable');
+  }
+});
+
+
+
     map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
-    loadMarkersForCurrentMap();
-  });
+
+
+
+  

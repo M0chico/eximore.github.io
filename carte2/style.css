@@ -2,7 +2,9 @@ body {
       margin: 0;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background: #111;
+      background: url('../image.png') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(14px);
       color: white;
       display: flex;
       justify-content: center;
@@ -39,7 +41,7 @@ body {
     .marker[data-category="lieu"] { color: cyan; }
 
     .marker:hover::after {
-      content: attr(data-name) "\A━━━━━━━━━━━━━━\A" attr(data-description) "\A━━━━━━━━━━━━━━\A" attr(data-coords);
+      content: attr(data-name);
       white-space: pre;
       position: absolute;
       background: rgba(20,20,20,0.95);
@@ -108,3 +110,99 @@ body {
     .mod-only {
       display: none;
     }
+
+    button, .filter-btn {
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover, .filter-btn:hover {
+  background: #555;
+  transform: scale(1.03);
+}
+
+#sidebar {
+  background: rgba(34, 34, 34, 0.95);
+  border-right: 2px solid #444;
+  box-shadow: 5px 0 15px rgba(0,0,0,0.4);
+}
+
+input, select {
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #888;
+}
+
+#toggle-btn {
+  background: #222;
+  border: 1px solid #444;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+#toggle-btn:hover {
+  background: #555;
+}
+.marker-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background: #111;
+  color: white;
+  border-left: 1px solid #444;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+  transition: right 0.3s ease;
+  z-index: 1001;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.marker-panel.open {
+  right: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+
+.fade-tip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 2s ease;
+  pointer-events: none;
+}
+.fade-tip.hide {
+  opacity: 0;
+}

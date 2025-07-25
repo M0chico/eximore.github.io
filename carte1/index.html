@@ -7,12 +7,13 @@
   <link rel="icon" type="image/png" href="../image.png">
 </head>
 <body>
-
+  <div id="marker-tip" class="fade-tip">
+  🛈 Cliquez sur les icônes pour avoir plus d'infos
+</div>
 <div id="sidebar">
   <button onclick="window.location.href='../index.html'" style="margin-bottom: 1rem; padding: 0.5rem 1rem; border-radius: 8px; background: #333; color: white; border: none; cursor: pointer;">
     ← Revenir au HUB
   </button>
-
   <h3 class="mod-only">Ajouter un marqueur</h3>
   <input class="mod-only" id="name" placeholder="Nom" />
   <select class="mod-only" id="category">
@@ -43,6 +44,14 @@
 </div>
 
 <script src="script.js"></script>
-
+<div id="marker-panel" class="marker-panel">
+  <div class="marker-panel-content">
+    <span id="close-marker-panel" class="close-btn">✖</span>
+    <h2 id="marker-title"></h2>
+    <img id="marker-image" src="" alt="Image du marqueur" />
+  <p><strong>Description :</strong><br><span id="marker-description"></span></p>
+  <p><strong>Coordonnées :</strong><br><span id="marker-coords"></span></p>
+  </div>
+</div>
 </body>
 </html>

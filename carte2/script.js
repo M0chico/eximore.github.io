@@ -6,8 +6,7 @@
     'carte2.png', // exemple palier 1
 
   ];
-  let isLoading = false;
-  let allEmojis = []; // Tous les emojis chargés
+  let isMod = false;
   let currentMapIndex = 0;
   let placing = false;
   let zoom = 1;
@@ -15,6 +14,12 @@
   let offsetY = 0;
   let hiddenCategories = new Set();
   let markers = [];
+  const icons = {
+    mob: '🐺',
+    quest: '❗',
+    ressource: '⛏️',
+    lieu: '🏠'
+  };
 
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('collapsed');
@@ -24,85 +29,33 @@
     placing = true;
   }
 
-function addMarker(x, y, name, category, description, coords = '', emoji = null) {
-  const icon = emoji || (document.getElementById('selected-emoji')?.textContent || '❓');
-
-  const el = document.createElement('div');
-  el.className = 'marker';
-  el.style.left = `${x}px`;
-  el.style.top = `${y}px`;
-  el.dataset.category = category;
-  el.dataset.name = name.toLowerCase();
-  el.dataset.description = description?.toLowerCase?.() || '';
-  el.dataset.coords = coords;
-  el.setAttribute('data-name', name);
-  el.setAttribute('data-description', description);
-  el.setAttribute('data-coords', coords);
-  el.textContent = icon;
-
-  el.addEventListener('contextmenu', e => {
-    e.preventDefault();
-    map.removeChild(el);
-    markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
-    saveMarkers();
-  });
-
-  map.appendChild(el);
-
-  if (!isLoading) {
-    markers.push({ x, y, name, category, description, coords, emoji: icon, map: currentMapIndex });
-    saveMarkers();
+  function addMarker(x, y, name, category, description, coords = '') {
+    const icon = icons[category] || '❓';
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    el.dataset.category = category;
+    el.dataset.name = name.toLowerCase();
+    el.dataset.description = description.toLowerCase();
+    el.dataset.coords = coords;
+    el.setAttribute('data-name', name);
+    el.setAttribute('data-description', description);
+    el.setAttribute('data-coords', coords);
+    el.textContent = icon;
+    el.addEventListener('contextmenu', e => {
+        if (!isMod) {
+    alert("Cette action est réservée aux modérateurs.");
+    return;
   }
-}
-
-  
-
-
-  // Chargement des emojis depuis GitHub (gemoji)
-async function fetchEmojis() {
-  const url = 'https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json';
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-}
-
-async function showEmojiPicker() {
-  const picker = document.getElementById('emoji-picker');
-  picker.innerHTML = 'Chargement...';
-
-  try {
-    allEmojis = await fetchEmojis(); // on stocke tous les emojis pour la recherche
-    renderEmojiPicker(allEmojis);
-  } catch (err) {
-    picker.innerHTML = 'Erreur de chargement des emojis.';
-    console.error(err);
+      e.preventDefault();
+      map.removeChild(el);
+      markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
+      saveMarkers();
+    });
+    map.appendChild(el);
   }
-}
 
-function renderEmojiPicker(emojis) {
-  const picker = document.getElementById('emoji-picker');
-  picker.innerHTML = '';
-
-  emojis.forEach(e => {
-    const btn = document.createElement('button');
-    btn.textContent = e.emoji;
-    btn.style.fontSize = '18px';
-    btn.style.border = 'none';
-    btn.style.background = 'none';
-    btn.style.cursor = 'pointer';
-    btn.title = e.description || '';
-    btn.onclick = () => {
-      document.getElementById('selected-emoji').textContent = e.emoji;
-    };
-    picker.appendChild(btn);
-  });
-}
-
-function filterEmojiPicker() {
-  const search = document.getElementById('emoji-search').value.toLowerCase();
-  const filtered = allEmojis.filter(e => e.description && e.description.toLowerCase().includes(search));
-  renderEmojiPicker(filtered);
-}
 
 function filterMarkers() {
   const query = document.getElementById('search').value.toLowerCase();
@@ -172,20 +125,20 @@ function filterMarkers() {
     map.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
   }, { passive: false });
 
-function exportMarkers() {
-  const blob = new Blob([JSON.stringify(markers, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'marqueurs.json'; // <-- extension ajoutée
-  a.click();
-  URL.revokeObjectURL(url);
-}
+  function exportMarkers() {
+    const blob = new Blob([JSON.stringify(markers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'marqueurs.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
 
 
 // ✅ Fonction pour charger automatiquement le fichier JSON
 function loadMarkersFromFile() {
-  isLoading = true;
   fetch('marqueurs.json')
     .then(response => {
       if (!response.ok) throw new Error("Erreur lors du chargement du fichier JSON");
@@ -196,13 +149,45 @@ function loadMarkersFromFile() {
       map.innerHTML = '';
       markers.forEach(m => {
         addMarker(m.x, m.y, m.name, m.category, m.description, m.coords, m.emoji);
+        // on ajoute une propriété temporaire pour associer l'image plus tard
+        m._internalId = `${m.name}_${m.x}_${m.y}`; // identifiant unique
       });
-      isLoading = false;
+
+      // Activer les clics pour afficher les détails
+      document.querySelectorAll('.marker').forEach(markerEl => {
+        const name = markerEl.dataset.name;
+        const x = parseFloat(markerEl.style.left);
+        const y = parseFloat(markerEl.style.top);
+        const match = markers.find(m =>
+          m.name === name &&
+          Math.abs(m.x - x) < 1 &&
+          Math.abs(m.y - y) < 1
+        );
+        if (match) {
+          markerEl.addEventListener('click', () => showMarkerDetails(match));
+        }
+      });
     })
     .catch(err => {
       alert("Impossible de charger les marqueurs : " + err.message);
-      isLoading = false;
     });
+}
+
+function showMarkerDetails(marker) {
+  // Mettre à jour les infos dans le panneau
+  document.getElementById('marker-title').textContent = marker.name;
+  document.getElementById('marker-description').textContent = marker.description || '';
+  document.getElementById('marker-coords').textContent = marker.coords || '';
+
+  // Charger une image correspondant au nom du marqueur (si elle existe)
+  const imgEl = document.getElementById('marker-image');
+  const imagePath = `images/${marker.name}.png`;  // Mets tes images dans le dossier /images/
+  imgEl.src = imagePath;
+  imgEl.onerror = () => imgEl.style.display = 'none';  // Cache si introuvable
+  imgEl.onload = () => imgEl.style.display = 'block';
+
+  // Ouvrir le panneau
+  document.getElementById('marker-panel').classList.add('open');
 }
 
 
@@ -212,6 +197,7 @@ window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
   
   document.getElementById('mod-code').addEventListener('change', function () {
     if (this.value === '6969') {
+      isMod = true;
       document.querySelectorAll('.mod-only').forEach(el => el.style.display = 'block');
       this.style.display = 'none';
     } else {
@@ -219,7 +205,23 @@ window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
     }
   });
 
-  // Initialisation au chargement
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById('close-marker-panel');
+  const panel = document.getElementById('marker-panel');
+
+  if (closeBtn && panel) {
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+    });
+  } else {
+    console.warn('Bouton fermeture ou panneau introuvable');
+  }
+});
+
+
+
     map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
-  });
+
+
+
+  

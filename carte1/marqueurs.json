@@ -2,17 +2,17 @@
   {
     "x": 294.9090957641601,
     "y": 400.29999931653333,
-    "name": "Sanglier/Pumba",
+    "name": "Sanglier",
     "category": "mob",
-    "description": "",
+    "description": "il y a les sangliers et Pumba",
     "coords": ""
   },
   {
     "x": 379.9090957641601,
     "y": 441.1333326498667,
-    "name": "Loup/Albal",
+    "name": "Loup",
     "category": "mob",
-    "description": "",
+    "description": "regroupe des loup de différent couleur et leur chef albal",
     "coords": ""
   },
   {

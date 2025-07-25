@@ -1,0 +1,20 @@
+[
+  {
+    "x": 335,
+    "y": 400,
+    "name": "Sanglier",
+    "category": "mob",
+    "description": "prout",
+    "coords": "200 0 200"
+  },
+  {
+    "x": 335,
+    "y": 400,
+    "name": "Sanglier",
+    "category": "mob",
+    "description": "prout",
+    "coords": "200 0 200",
+    "emoji": "💩",
+    "map": 0
+  }
+]
