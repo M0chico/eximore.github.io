@@ -2,22 +2,21 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .background-blur {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('image.png'); /* Ton image */
+  width: 100vw;
+  height: 100vh;
+  background-image: url('image.png');
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  filter: blur(15px);
+  background-position: center;
+  filter: blur(8px);
   z-index: -1;
 }
 
@@ -25,36 +24,8 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  height: 100%;
   padding: 2rem;
-  text-align: center;
-}
-
-.hub-container h1 {
-  font-size: 4rem;
-  color: white;
-  text-shadow: 2px 2px 4px #000;
-  margin-bottom: 2rem;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  max-width: 1000px;
-}
-
-.palier-card:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
-}
-.hub-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  padding-bottom: 5rem; /* pour éviter que le footer cache du contenu */
   color: white;
   text-shadow: 2px 2px 4px #000;
 }
@@ -90,11 +61,18 @@ body, html {
   transform: scale(1.05);
 }
 
+/* ✅ Bandeau noir fixe en bas */
 footer {
-  margin: 3rem 0 1rem;
-  text-align: center;
-  font-size: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
   color: #ccc;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  z-index: 10;
 }
 
 footer a {
