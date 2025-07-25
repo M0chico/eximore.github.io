@@ -1,0 +1,110 @@
+body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #map-container {
+      position: relative;
+      width: 1000px;
+      height: 700px;
+      overflow: hidden;
+    }
+
+    #map {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 800px;
+      height: 600px;
+      transform-origin: 0 0;
+      position: absolute;
+    }
+
+    .marker {
+      position: absolute;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .marker[data-category="mob"]  { color: red; }
+    .marker[data-category="quest"] { color: yellow; }
+    .marker[data-category="ressource"] { color: lime; }
+    .marker[data-category="lieu"] { color: cyan; }
+
+    .marker:hover::after {
+      content: attr(data-name) "\A━━━━━━━━━━━━━━\A" attr(data-description) "\A━━━━━━━━━━━━━━\A" attr(data-coords);
+      white-space: pre;
+      position: absolute;
+      background: rgba(20,20,20,0.95);
+      color: #eee;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+      top: 30px;
+      left: 10px;
+      width: 220px;
+      z-index: 1000;
+      font-size: 14px;
+      font-family: monospace;
+    }
+
+    
+    #sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #222;
+      padding: 10px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    #sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    #toggle-btn {
+      position: absolute;
+      top: 10px;
+      left: 260px;
+      z-index: 1000;
+      background: #444;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    .filter-btn {
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    #mod-code {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 100px;
+      z-index: 1000;
+    }
+
+    .mod-only {
+      display: none;
+    }

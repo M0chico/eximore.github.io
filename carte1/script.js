@@ -3,11 +3,10 @@
 
   // Mets ici tes 25 URLs des cartes
   const mapUrls = [
-    'carte2.png', // exemple palier 1
+    'carte1.png', // exemple palier 1
 
   ];
-  let isLoading = false;
-  let allEmojis = []; // Tous les emojis chargés
+  
   let currentMapIndex = 0;
   let placing = false;
   let zoom = 1;
@@ -15,6 +14,12 @@
   let offsetY = 0;
   let hiddenCategories = new Set();
   let markers = [];
+  const icons = {
+    mob: '🐺',
+    quest: '❗',
+    ressource: '⛏️',
+    lieu: '🏠'
+  };
 
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('collapsed');
@@ -24,85 +29,37 @@
     placing = true;
   }
 
-function addMarker(x, y, name, category, description, coords = '', emoji = null) {
-  const icon = emoji || (document.getElementById('selected-emoji')?.textContent || '❓');
-
-  const el = document.createElement('div');
-  el.className = 'marker';
-  el.style.left = `${x}px`;
-  el.style.top = `${y}px`;
-  el.dataset.category = category;
-  el.dataset.name = name.toLowerCase();
-  el.dataset.description = description?.toLowerCase?.() || '';
-  el.dataset.coords = coords;
-  el.setAttribute('data-name', name);
-  el.setAttribute('data-description', description);
-  el.setAttribute('data-coords', coords);
-  el.textContent = icon;
-
-  el.addEventListener('contextmenu', e => {
-    e.preventDefault();
-    map.removeChild(el);
-    markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
-    saveMarkers();
-  });
-
-  map.appendChild(el);
-
-  if (!isLoading) {
-    markers.push({ x, y, name, category, description, coords, emoji: icon, map: currentMapIndex });
-    saveMarkers();
+  function addMarker(x, y, name, category, description, coords = '') {
+    const icon = icons[category] || '❓';
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    el.dataset.category = category;
+    el.dataset.name = name.toLowerCase();
+    el.dataset.description = description.toLowerCase();
+    el.dataset.coords = coords;
+    el.setAttribute('data-name', name);
+    el.setAttribute('data-description', description);
+    el.setAttribute('data-coords', coords);
+    el.textContent = icon;
+    el.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      map.removeChild(el);
+      markers = markers.filter(m => !(m.x === x && m.y === y && m.name === name));
+      saveMarkers();
+    });
+    map.appendChild(el);
   }
-}
 
-  
-
-
-  // Chargement des emojis depuis GitHub (gemoji)
-async function fetchEmojis() {
-  const url = 'https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json';
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-}
-
-async function showEmojiPicker() {
-  const picker = document.getElementById('emoji-picker');
-  picker.innerHTML = 'Chargement...';
-
-  try {
-    allEmojis = await fetchEmojis(); // on stocke tous les emojis pour la recherche
-    renderEmojiPicker(allEmojis);
-  } catch (err) {
-    picker.innerHTML = 'Erreur de chargement des emojis.';
-    console.error(err);
+  function loadMarkersForCurrentMap() {
+    markers = [];
+    map.innerHTML = '';
+    if (allMarkers[currentMapIndex]) {
+      markers = allMarkers[currentMapIndex];
+      markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
+    }
   }
-}
-
-function renderEmojiPicker(emojis) {
-  const picker = document.getElementById('emoji-picker');
-  picker.innerHTML = '';
-
-  emojis.forEach(e => {
-    const btn = document.createElement('button');
-    btn.textContent = e.emoji;
-    btn.style.fontSize = '18px';
-    btn.style.border = 'none';
-    btn.style.background = 'none';
-    btn.style.cursor = 'pointer';
-    btn.title = e.description || '';
-    btn.onclick = () => {
-      document.getElementById('selected-emoji').textContent = e.emoji;
-    };
-    picker.appendChild(btn);
-  });
-}
-
-function filterEmojiPicker() {
-  const search = document.getElementById('emoji-search').value.toLowerCase();
-  const filtered = allEmojis.filter(e => e.description && e.description.toLowerCase().includes(search));
-  renderEmojiPicker(filtered);
-}
 
 function filterMarkers() {
   const query = document.getElementById('search').value.toLowerCase();
@@ -132,6 +89,19 @@ function filterMarkers() {
     map.style.transform = `translate(0px, 0px) scale(1)`;
   }
 
+  function changeMap() {
+    const select = document.getElementById('map-selector');
+    currentMapIndex = parseInt(select.value);
+
+    // Change le fond de la carte
+    map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
+
+    // Recharge les marqueurs de la carte courante
+    loadMarkersForCurrentMap();
+
+    // Reset vue (optionnel)
+    resetView();
+  }
 
   map.addEventListener('click', function(e) {
     if (!placing) return;
@@ -172,20 +142,20 @@ function filterMarkers() {
     map.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
   }, { passive: false });
 
-function exportMarkers() {
-  const blob = new Blob([JSON.stringify(markers, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'marqueurs.json'; // <-- extension ajoutée
-  a.click();
-  URL.revokeObjectURL(url);
-}
+  function exportMarkers() {
+    const blob = new Blob([JSON.stringify(markers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'marqueurs.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
 
 
 // ✅ Fonction pour charger automatiquement le fichier JSON
 function loadMarkersFromFile() {
-  isLoading = true;
   fetch('marqueurs.json')
     .then(response => {
       if (!response.ok) throw new Error("Erreur lors du chargement du fichier JSON");
@@ -193,18 +163,13 @@ function loadMarkersFromFile() {
     })
     .then(data => {
       markers = data;
-      map.innerHTML = '';
-      markers.forEach(m => {
-        addMarker(m.x, m.y, m.name, m.category, m.description, m.coords, m.emoji);
-      });
-      isLoading = false;
+      map.innerHTML = ''; // Vide la carte
+      markers.forEach(m => addMarker(m.x, m.y, m.name, m.category, m.description, m.coords));
     })
     .catch(err => {
       alert("Impossible de charger les marqueurs : " + err.message);
-      isLoading = false;
     });
 }
-
 
 window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
 
@@ -222,4 +187,5 @@ window.addEventListener('DOMContentLoaded', loadMarkersFromFile);
   // Initialisation au chargement
   document.addEventListener('DOMContentLoaded', () => {
     map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
+    loadMarkersForCurrentMap();
   });
