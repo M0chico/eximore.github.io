@@ -7,27 +7,14 @@
   <link rel="icon" type="image/png" href="../image.png">
 </head>
 <body>
-
+  <div id="marker-tip" class="fade-tip">
+  🛈 Cliquez sur les icônes pour avoir plus d'infos
+</div>
+<button id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
 <div id="sidebar">
-  <button onclick="window.location.href='../index.html'" style="margin-bottom: 1rem; padding: 0.5rem 1rem; border-radius: 8px; background: #333; color: white; border: none; cursor: pointer;">
-    ← Revenir au HUB
-  </button>
-
-  <div class="mod-only">
-    <label><strong>Emoji :</strong></label>
-    <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-      <span id="selected-emoji" style="font-size: 20px;">❓</span>
-      <button type="button" onclick="showEmojiPicker()">Choisir un emoji</button>
-    </div>
-
-    <input id="emoji-search" placeholder="🔍 Rechercher un emoji..." style="margin-top: 6px; width: 100%;" oninput="filterEmojiPicker()" />
-
-    <div id="emoji-picker"
-         style="display: flex; flex-wrap: wrap; max-height: 120px; overflow-y: auto; margin-top: 6px; gap: 4px; border: 1px solid #ccc; padding: 4px; border-radius: 4px;">
-    </div>
-  </div>
-
-
+<button class="return-button" onclick="window.location.href='../index.html'">
+  ← Revenir au HUB
+</button>
   <h3 class="mod-only">Ajouter un marqueur</h3>
   <input class="mod-only" id="name" placeholder="Nom" />
   <select class="mod-only" id="category">
@@ -51,7 +38,6 @@
   <button onclick="resetView()">🔄 Recentrer</button>
 </div>
 
-<div id="toggle-btn" onclick="toggleSidebar()">≡</div>
 <input id="mod-code" placeholder="Code admin" />
 <div id="map-container">
   <div id="map"></div>
@@ -63,8 +49,8 @@
     <span id="close-marker-panel" class="close-btn">✖</span>
     <h2 id="marker-title"></h2>
     <img id="marker-image" src="" alt="Image du marqueur" />
-  <p><strong>Description :</strong><br><span id="marker-description"></span></p>
-  <p><strong>Coordonnées :</strong><br><span id="marker-coords"></span></p>
+<p id="marker-description-block"><strong>Description :</strong><br><span id="marker-description"></span></p>
+<p id="marker-coords-block"><strong>Coordonnées :</strong><br><span id="marker-coords"></span></p>
   </div>
 </div>
 </body>

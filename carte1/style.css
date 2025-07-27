@@ -63,24 +63,6 @@ body {
       font-family: monospace;
     }
 
-    
-    #sidebar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background: #222;
-      padding: 10px;
-      box-sizing: border-box;
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-
-    #sidebar.collapsed {
-      transform: translateX(-100%);
-    }
-
     #toggle-btn {
       position: absolute;
       top: 10px;
@@ -129,12 +111,6 @@ body {
 button:hover, .filter-btn:hover {
   background: #555;
   transform: scale(1.03);
-}
-
-#sidebar {
-  background: rgba(34, 34, 34, 0.95);
-  border-right: 2px solid #444;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.4);
 }
 
 input, select {
@@ -281,3 +257,74 @@ input:focus, select:focus {
     max-height: 150px;
   }
 }
+
+@media (max-width: 950px) {
+  #marker-tip {
+    display: none;
+  }
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  background: #222;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+#sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  background: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#sidebar-toggle:hover {
+  background: #444;
+}
+
+/* Quand sidebar est repliée */
+#sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+/* RESPONSIVE : écran trop petit */
+@media (max-width: 1170px) {
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar-toggle {
+    display: block;
+  }
+  #sidebar .return-button {
+  margin-top: 4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  }
+}
+
+

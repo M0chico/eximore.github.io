@@ -176,14 +176,14 @@ function loadMarkersFromFile() {
 function showMarkerDetails(marker) {
   document.getElementById('marker-title').textContent = marker.name;
 
-  // DESCRIPTION
-  const descBlock = document.getElementById('marker-description-block');
-  if (marker.description && marker.description.trim() !== '') {
-    document.getElementById('marker-description').textContent = marker.description;
-    descBlock.style.display = 'block';
-  } else {
-    descBlock.style.display = 'none';
-  }
+const descBlock = document.getElementById('marker-description-block');
+if (marker.description && marker.description.trim() !== '') {
+  const description = marker.description.replace(/\n/g, "<br>");
+  document.getElementById('marker-description').innerHTML = description;
+  descBlock.style.display = 'block';
+} else {
+  descBlock.style.display = 'none';
+}
 
   // COORDONNÉES
   const coordsBlock = document.getElementById('marker-coords-block');
@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
 
-
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
 
   

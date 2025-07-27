@@ -174,16 +174,33 @@ function loadMarkersFromFile() {
 }
 
 function showMarkerDetails(marker) {
-  // Mettre à jour les infos dans le panneau
   document.getElementById('marker-title').textContent = marker.name;
-  document.getElementById('marker-description').textContent = marker.description || '';
-  document.getElementById('marker-coords').textContent = marker.coords || '';
 
-  // Charger une image correspondant au nom du marqueur (si elle existe)
+const descBlock = document.getElementById('marker-description-block');
+if (marker.description && marker.description.trim() !== '') {
+  const description = marker.description.replace(/\n/g, "<br>");
+  document.getElementById('marker-description').innerHTML = description;
+  descBlock.style.display = 'block';
+} else {
+  descBlock.style.display = 'none';
+}
+
+  // COORDONNÉES
+  const coordsBlock = document.getElementById('marker-coords-block');
+  if (marker.coords && marker.coords.trim() !== '') {
+    document.getElementById('marker-coords').textContent = marker.coords;
+    coordsBlock.style.display = 'block';
+  } else {
+    coordsBlock.style.display = 'none';
+  }
+
+  // IMAGE
+  const fileName = marker.name.replace(/\s+/g, '_');
+  const imagePath = `images/${fileName}.png`;
+
   const imgEl = document.getElementById('marker-image');
-  const imagePath = `images/${marker.name}.png`;  // Mets tes images dans le dossier /images/
   imgEl.src = imagePath;
-  imgEl.onerror = () => imgEl.style.display = 'none';  // Cache si introuvable
+  imgEl.onerror = () => imgEl.style.display = 'none';
   imgEl.onload = () => imgEl.style.display = 'block';
 
   // Ouvrir le panneau
@@ -222,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     map.style.backgroundImage = `url('${mapUrls[currentMapIndex]}')`;
 
-
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
 
   
