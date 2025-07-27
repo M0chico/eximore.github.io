@@ -63,24 +63,6 @@ body {
       font-family: monospace;
     }
 
-    
-    #sidebar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background: #222;
-      padding: 10px;
-      box-sizing: border-box;
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-
-    #sidebar.collapsed {
-      transform: translateX(-100%);
-    }
-
     #toggle-btn {
       position: absolute;
       top: 10px;
@@ -129,12 +111,6 @@ body {
 button:hover, .filter-btn:hover {
   background: #555;
   transform: scale(1.03);
-}
-
-#sidebar {
-  background: rgba(34, 34, 34, 0.95);
-  border-right: 2px solid #444;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.4);
 }
 
 input, select {
@@ -349,4 +325,32 @@ input:focus, select:focus {
   border: none;
   cursor: pointer;
   }
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  background-color: #000000;
+  color: #333;
+  box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  border-color: #888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+textarea, select {
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
 }
