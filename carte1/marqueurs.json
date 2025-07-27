@@ -18,9 +18,9 @@
   {
     "x": 480.7424290974934,
     "y": 426.9666659832,
-    "name": "Nephentes/Plante Dévoreuse",
+    "name": "Plante carnivore",
     "category": "mob",
-    "description": "",
+    "description": "Nephentes/Plante Dévoreuse",
     "coords": ""
   },
   {
@@ -210,25 +210,25 @@
   {
     "x": 260.5959777832031,
     "y": 391.88321685791016,
-    "name": "Genzo/Bartok/Greta/Soeur-Therra",
+    "name": "PNJ de hanaka",
     "category": "quest",
-    "description": "Rina/Maya/Toban",
+    "description": "Genzo/Bartok/Greta/Soeur-Therra/Rina/Maya/Toban",
     "coords": "Voir GitBook"
   },
   {
     "x": 458.5959777832031,
     "y": 421.88321685791016,
-    "name": "Michelle/Martine/Elwyn/Louise/Phares",
+    "name": "PNJ de mizunari",
     "category": "quest",
-    "description": "",
+    "description": "Michelle/Martine/Elwyn/Louise/Phares",
     "coords": "Voir GitBook"
   },
   {
     "x": 125.59597778320312,
     "y": 345.88321685791016,
-    "name": "Saya/Ayaka/Daiki",
+    "name": "PNJ du Vallhat",
     "category": "quest",
-    "description": "",
+    "description": "Saya/Ayaka/Daiki",
     "coords": "Voir GitBook"
   },
   {
@@ -242,17 +242,17 @@
   {
     "x": 267.5959777832031,
     "y": 207.88321685791016,
-    "name": "Juliette/Luc",
+    "name": "PNJ de Virelune",
     "category": "quest",
-    "description": "",
+    "description": "Juliette/Luc",
     "coords": "Voir GitBook"
   },
   {
     "x": 316.5959777832031,
     "y": 59.883216857910156,
-    "name": "Yannis/Gilmar/Tomoko",
+    "name": "PNJ de Candelia",
     "category": "quest",
-    "description": "",
+    "description": "Yannis/Gilmar/Tomoko",
     "coords": "Voir GitBook"
   },
   {
@@ -266,7 +266,7 @@
   {
     "x": 477.5959777832031,
     "y": 320.88321685791016,
-    "name": "Jean/Corentin",
+    "name": "Jean et Corentin",
     "category": "quest",
     "description": "",
     "coords": "Voir GitBook"
@@ -274,41 +274,41 @@
   {
     "x": 342.5959777832031,
     "y": 497.88321685791016,
-    "name": "Varne/Elwen/Milla",
+    "name": "PNJ Est",
     "category": "quest",
-    "description": "",
+    "description": "Varne/Elwen/Milla   milla se trouve a l'église au dessus",
     "coords": "Voir GitBook"
   },
   {
     "x": 296.5959777832031,
     "y": 549.8832168579102,
-    "name": "Inari/Orin",
+    "name": "PNJ Sud",
     "category": "quest",
-    "description": "",
+    "description": "Inari/Orin",
     "coords": "Voir GitBook"
   },
   {
     "x": 250.59597778320312,
     "y": 494.88321685791016,
-    "name": "Rikyu/Bunta/Meiko/Saria",
+    "name": "PNJ Ouest",
     "category": "quest",
-    "description": "",
+    "description": "Rikyu/Bunta/Meiko/Saria",
     "coords": "Voir GitBook"
   },
   {
     "x": 296.5959777832031,
     "y": 453.88321685791016,
-    "name": "Tilda/Lila",
+    "name": "PNJ Nord",
     "category": "quest",
-    "description": "",
+    "description": "Tilda/Lila",
     "coords": "Voir GitBook"
   },
   {
     "x": 238.59597778320312,
     "y": 215.88321685791016,
-    "name": "Poisson Requin/Sea Void",
+    "name": "Poisson carnivore",
     "category": "mob",
-    "description": "",
+    "description": "Poisson Requin/Sea Void",
     "coords": ""
   }
 ]
