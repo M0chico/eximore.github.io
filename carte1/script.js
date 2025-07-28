@@ -21,6 +21,8 @@
     lieu: '🏠'
   };
 
+  
+
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('collapsed');
   }
@@ -244,4 +246,29 @@ function toggleSidebar() {
   sidebar.classList.toggle('open');
 }
 
+
+window.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const entiteDemandee = params.get('entite');
+  if (!entiteDemandee) return;
+
+  // On attend un petit peu que tous les éléments HTML soient bien chargés
+  await new Promise(resolve => setTimeout(resolve, 50));
+
+  const response = await fetch("marqueurs.json");
+  const data = await response.json();
+
+  const marker = data.find(m => m.name === entiteDemandee);
+  if (!marker) return;
+
+  // Mettre à jour la barre de recherche (quand elle est prête)
+  const searchInput = document.getElementById('search');
+  if (searchInput) {
+    searchInput.value = marker.name;
+    searchInput.dispatchEvent(new Event('input')); // <- IMPORTANT pour déclencher les filtres si besoin
+  }
+
+  // Affiche les détails dans le marker panel
+  showMarkerDetails(marker);
+});
   
