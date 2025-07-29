@@ -78,22 +78,29 @@ input.addEventListener('input', () => {
     return;
   }
 
-  matches.slice(0, 5).forEach(match => {
-    const shortDesc = match.description.split('\n').slice(0, 2).join('<br>');
-    const url = `${match.carte}/index.html?entite=${encodeURIComponent(match.name)}`;
+matches.slice(0, 5).forEach(match => {
+  const shortDesc = match.description.split('\n').slice(0, 2).join('<br>');
+  const url = `${match.carte}/index.html?entite=${encodeURIComponent(match.name)}`;
 
-    const result = document.createElement('a');
-    result.href = url;
-    result.className = 'search-item';
-    result.innerHTML = `
+  // Remplace les espaces dans le nom pour le nom de l'image
+  const imageName = match.name.replace(/\s+/g, '_');
+  const imagePath = `${match.carte}/images/${imageName}.png`;
+
+  const result = document.createElement('a');
+  result.href = url;
+  result.className = 'search-item';
+  result.innerHTML = `
+    <img class="result-img" src="${imagePath}" alt="${match.name}" onerror="this.style.display='none'">
+    <div class="result-text">
       <strong>${match.name}</strong><br>
-      <span>${shortDesc}</span>
-    `;
+      <span>${shortDesc}...</span>
+    </div>
+  `;
 
-    resultBox.appendChild(result);
-  });
+  resultBox.appendChild(result);
+});
 
-  resultBox.style.display = 'block';
+resultBox.style.display = 'block';
 });
 
 // Démarrage
