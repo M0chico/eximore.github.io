@@ -118,7 +118,7 @@ function filterMarkers() {
     const mouseY = (e.clientY - rect.top);
     const prevZoom = zoom;
     const zoomAmount = e.deltaY < 0 ? 0.1 : -0.1;
-    zoom = Math.min(3, Math.max(1, zoom + zoomAmount));
+    zoom = Math.min(6, Math.max(1, zoom + zoomAmount));
 
     const dx = mouseX / prevZoom;
     const dy = mouseY / prevZoom;
