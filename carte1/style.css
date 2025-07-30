@@ -2,7 +2,7 @@ body {
       margin: 0;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background: url('../../image.png') no-repeat center center fixed;
+      background: url('../image.png') no-repeat center center fixed;
       background-size: cover;
       backdrop-filter: blur(14px);
       color: white;
