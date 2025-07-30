@@ -7,7 +7,7 @@ for (let i = 1; i <= 100; i++) {
   card.textContent = label;
   card.className = 'palier-card';
   if (i <= 1) {
-    card.href = `/carte${i}/index.html`;
+    card.href = `carte${i}/index.html`;
   } else {
     card.href = '#';
     card.style.pointerEvents = 'none';

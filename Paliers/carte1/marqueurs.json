@@ -1,0 +1,314 @@
+[
+  {
+    "x": 294.9090957641601,
+    "y": 400.29999931653333,
+    "name": "Sanglier",
+    "category": "mob",
+    "description": "il y a les sangliers et Pumba \n\n Sanglier Frénétique : Peau de Sanglier 50% \n\n Pumba : Peau de Sanglier 65%",
+    "coords": ""
+  },
+  {
+    "x": 379.9090957641601,
+    "y": 441.1333326498667,
+    "name": "Loup",
+    "category": "mob",
+    "description": "regroupe des loup de différent couleur et leur chef albal\n\nLoup : Fourrure de Loup 60% et Crocs de Loup 30%\n\nAlbal : Fourrure de Loup 100% et Crocs de Loup 70% et Crocs de Albal 20%",
+    "coords": ""
+  },
+  {
+    "x": 480.7424290974934,
+    "y": 426.9666659832,
+    "name": "Plante carnivore",
+    "category": "mob",
+    "description": "Nephentes : Spore Corrumpu 50% et Fragments de Feuilles 45% \n\nPlante Dévoreuse : Spore Corrumpu 50%",
+    "coords": ""
+  },
+  {
+    "x": 234.07576243082679,
+    "y": 350.29999931653333,
+    "name": "Tréant",
+    "category": "mob",
+    "description": "Mini Tréant :40% Pousse de Sylve et 30% Eclat de bois Magique\n\nGuerrier Tréant : 35% Ecorce de Titan ,10% Racine Ancestrale et 3% Bouclier Sylvestre\n\nTréant Elite : Ecorce Sylvestre 40% , Corde d'arc Sylvestre 25% et Arc Sylvestre 2%\n\nMage Sylvestre : Brindille Enchanté 30% , Coeur de bois 20% , Tissu Spectral 30% et Baton Sylvestre 2%\n\nGardien Colossal : Mycelium Magique 5%",
+    "coords": ""
+  },
+  {
+    "x": 124.90909576416014,
+    "y": 351.9666659832,
+    "name": "Slime",
+    "category": "mob",
+    "description": "Petit slime : Gelée de slime 30% \n\nGuerrierSlime : Gelée de slime 30%\n\nSlime Soigneur : Gelée de slime 30% et Noyau de Slime 5%\n\nSlime Magicien : Gelée de slime 30% et Noyau de Slime 5%\n\nGorbel : Gelée de slime 30% et Noyau de Slime 5% et Essence du Roi des Slimes 1%",
+    "coords": ""
+  },
+  {
+    "x": 414.9090957641601,
+    "y": 510.29999931653333,
+    "name": "Squelette",
+    "category": "mob",
+    "description": "Squelette Epéiste : Os de Squelette 45% , Ame des ruines 40% , Poussiére d'os 35% et épée osseuse 5%\n\nSquelette Halbardier : Os de squelette 45% , Ame des ruines 40% et Poussiére d'os 35%\n\nArcher squelette : Ame des ruines 40% , os de squelette renforcé 30% et Poussiére d'os 20%\n\nTank squelette : Os de squelette renforcé 40% , Poussiére d'os 30% et Tissu Maudit 50%\n\nMage squelette : NO DATA\n\nNarax(Boss) : Coeur Putréfié 70%\n\nNasgul(boss) : Eclat du sabot maudit 1% et Morceau de Criniére spectrale 2.5%",
+    "coords": ""
+  },
+  {
+    "x": 569.0757624308268,
+    "y": 451.9666659832,
+    "name": "Bandit",
+    "category": "mob",
+    "description": "Bandit Assassin : Petite Bourse 35% et Cuir usé 30% ",
+    "coords": ""
+  },
+  {
+    "x": 471.5757624308267,
+    "y": 466.9666659832,
+    "name": "Ika",
+    "category": "mob",
+    "description": "Ika : Carapace de Ika 70%",
+    "coords": ""
+  },
+  {
+    "x": 224.90909576416013,
+    "y": 133.63333264986673,
+    "name": "Araignée",
+    "category": "mob",
+    "description": "Araignée des Forets : Fil d'araignée 50%  et Tissu d'araignée 40% ",
+    "coords": ""
+  },
+  {
+    "x": 574.90909576416,
+    "y": 104.46666598320006,
+    "name": "Cerf",
+    "category": "mob",
+    "description": "Cerf des montgnes : Peau de cerf des montagnes 45%",
+    "coords": ""
+  },
+  {
+    "x": 556.5959777832031,
+    "y": 210.88321685791016,
+    "name": "Monstre des Montagnes",
+    "category": "mob",
+    "description": "Golem de Glace : Peau dur glacial 30% et Poussiére de Givre 40%\n\nSpirite de Glace : Eclat Magique glacial 35% et Poussiére de Givre 35%\n\nOurs de Glace : Poussiére de Givre 1 a 3 80% et Fragment de l'ame de l'ours 5%",
+    "coords": ""
+  },
+  {
+    "x": 360.5959777832031,
+    "y": 395.88321685791016,
+    "name": "Mine",
+    "category": "ressource",
+    "description": "Charbon/Cuivre/Fer",
+    "coords": "x 2400 z 3500"
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 399.88321685791016,
+    "name": "Bois",
+    "category": "ressource",
+    "description": "Chêne",
+    "coords": ""
+  },
+  {
+    "x": 364.5959777832031,
+    "y": 491.88321685791016,
+    "name": "Bois",
+    "category": "ressource",
+    "description": "Chêne",
+    "coords": ""
+  },
+  {
+    "x": 355.5959777832031,
+    "y": 410.88321685791016,
+    "name": "Agriculture",
+    "category": "ressource",
+    "description": "Blé/Allium",
+    "coords": ""
+  },
+  {
+    "x": 288.5959777832031,
+    "y": 490.88321685791016,
+    "name": "Ville de Départ",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 484.5959777832031,
+    "y": 159.88321685791016,
+    "name": "Tolbana",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 452.5959777832031,
+    "y": 414.88321685791016,
+    "name": "Mizunari",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 112.59597778320312,
+    "y": 263.88321685791016,
+    "name": "Jardin des Géants",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 309.5959777832031,
+    "y": 59.883216857910156,
+    "name": "Candelia",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 348.5959777832031,
+    "y": 355.88321685791016,
+    "name": "Quartier OG",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 251.59597778320312,
+    "y": 383.88321685791016,
+    "name": "Hanaka",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 575.5959777832031,
+    "y": 442.88321685791016,
+    "name": "Mine de Geldorak",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 117.59597778320312,
+    "y": 337.88321685791016,
+    "name": "Vallhat",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 416.5959777832031,
+    "y": 328.88321685791016,
+    "name": "CastelBrume",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 257.5959777832031,
+    "y": 203.88321685791016,
+    "name": "Virelune",
+    "category": "lieu",
+    "description": "",
+    "coords": ""
+  },
+  {
+    "x": 260.5959777832031,
+    "y": 391.88321685791016,
+    "name": "PNJ de hanaka",
+    "category": "quest",
+    "description": "Genzo : 6 Crocs de Loup + 2 Eclats de Bois Magique\n\nBartok : 50 Peaux de Sanglier + 25 Crocs de Loup\n\nGreta : 15 Fleurs d'Allium + 5 Fils d'Araignée\n\nSoeur-Therra : 20 Gelées de Slime + 1 Essence de Gorbel\n\nToban : 5 Ecorces de Titan + 2 Mycélium Magique\n\nRina : 4 Fleurs d'Allium + 2 Gelées de Slime\n\nMaya : 8 Brindilles Enchanté + 2 Gelée de Slime",
+    "coords": ""
+  },
+  {
+    "x": 458.5959777832031,
+    "y": 421.88321685791016,
+    "name": "PNJ de mizunari",
+    "category": "quest",
+    "description": "Michelle : 10 Fragments de Feuilles\n\nMartine : 16 Epis Sauvage\n\nElwyn : 10 Ecorces Sylvestre + 10 Brindilles Enchantés + 3 Racines Ancestrales\n\nLouise : 64 Lingots de Cuivre\n\nPhares : 20 Bûches de Bois",
+    "coords": ""
+  },
+  {
+    "x": 125.59597778320312,
+    "y": 345.88321685791016,
+    "name": "PNJ du Vallhat",
+    "category": "quest",
+    "description": "Saya : 4 Tissus Spectral + 3 Brindilles Enchantées\n\nAyaka : 25 Pousses de Sylves + 5 Mycélium Magique\n\nDaiki : 4 Peaux de Sanglier + 2 Crocs Albal",
+    "coords": ""
+  },
+  {
+    "x": 120.59597778320312,
+    "y": 267.88321685791016,
+    "name": "Zebulgarath",
+    "category": "quest",
+    "description": "3 Racines Ancestrales",
+    "coords": ""
+  },
+  {
+    "x": 267.5959777832031,
+    "y": 207.88321685791016,
+    "name": "PNJ de Virelune",
+    "category": "quest",
+    "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau\n\nLuc : Tuer les monstres sur le chemin de la mine",
+    "coords": ""
+  },
+  {
+    "x": 316.5959777832031,
+    "y": 59.883216857910156,
+    "name": "PNJ de Candelia",
+    "category": "quest",
+    "description": "Yannis : 20 Bûches de bois\n\nGilmar : 10 Eclat Magique Glacial + 5 Fragments Cassé Violet\n\nTomoko : 20 Ecorce Sylvestre + 5 Racines Ancestrales",
+    "coords": ""
+  },
+  {
+    "x": 290.5959777832031,
+    "y": 83.88321685791016,
+    "name": "Gilbert",
+    "category": "quest",
+    "description": "3 Tissus Spectral",
+    "coords": ""
+  },
+  {
+    "x": 477.5959777832031,
+    "y": 320.88321685791016,
+    "name": "Jean et Corentin",
+    "category": "quest",
+    "description": "Jean : 40 Bûches de Chêne + 20 Minerais de Fer\n\nCorentin : 64 Bûches de Chêne",
+    "coords": ""
+  },
+  {
+    "x": 342.5959777832031,
+    "y": 497.88321685791016,
+    "name": "PNJ Est",
+    "category": "quest",
+    "description": "Varne : 4 Fourrures de Loup + 2 Eclats de Bois Magique + 1 Os de Squelette Supérieur\n\nElwen : 5 Fourrures de Loup\n\nMilla : 15 Fragments de Feuilles + 3 Mycélium Magique (milla se trouve a l'église au dessus)",
+    "coords": ""
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 549.8832168579102,
+    "name": "PNJ Sud",
+    "category": "quest",
+    "description": "Inari : Full armure Ika\n\nOrin : 5 Minerais de Fer + 5 Corde d'Arc Sylvestre",
+    "coords": ""
+  },
+  {
+    "x": 250.59597778320312,
+    "y": 494.88321685791016,
+    "name": "PNJ Ouest",
+    "category": "quest",
+    "description": "Rikyu : 25 Fragments de Feuilles + 8 Fleur d'Allium\n\nBunta :  5 Eclats Bois Magique + 5 Poussière d'Os + 3 Noyau de Slime\n\nMeiko : 5 Tissus d'Araignée + 3 Cuir Usé\n\nSaria : 50 Gelées de Slime + 10 Minerais de Fer",
+    "coords": ""
+  },
+  {
+    "x": 296.5959777832031,
+    "y": 453.88321685791016,
+    "name": "PNJ Nord",
+    "category": "quest",
+    "description": "Tilda : 1 Arc Courbé\n\nLila : 1 Coeur de Bois",
+    "coords": ""
+  },
+  {
+    "x": 238.59597778320312,
+    "y": 215.88321685791016,
+    "name": "Poisson carnivore",
+    "category": "mob",
+    "description": "Poisson Requin : carapace de requin 70% \n\nSea Void : coeur du truc No DATA",
+    "coords": ""
+  }
+]
