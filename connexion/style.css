@@ -1,3 +1,5 @@
+
+
 body, html {
   margin: 0;
   padding: 0;
@@ -406,10 +408,152 @@ header {
   border-radius: 12px;
   background: #000;
 }
-.highlight {
-  background-color: gold;
-  color: black;
-  border: 2px solid orange;
-  box-shadow: 0 0 10px gold;
+
+.session-container {
+  display: flex;
+  flex-wrap: wrap;          /* Permet de passer en vertical sur petit écran */
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+  width: 100%;              /* Prend toute la largeur disponible */
+  max-width: 750px;         /* Mais pas plus que 750px */
+  margin: 20px auto;        /* Centré horizontalement avec marge verticale */
 }
 
+
+  /* Formulaire */
+  .form-section {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-section h2 {
+    margin-bottom: 15px;
+    color: orange;
+    text-align: center;
+  }
+
+  .form-section input,
+  .form-section button {
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .form-section input {
+    background-color: #2a2a2a;
+    color: white;
+  }
+
+  .form-section input::placeholder {
+    color: #aaa;
+  }
+
+  .form-section button {
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .form-section button:hover {
+    background-color: darkorange;
+  }
+
+  /* Skin */
+  .skin-section {
+    background-color: #0f0f0f;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+
+  .skin-section img {
+    max-height: 350px; /* Agrandi */
+    display: block;
+  }
+
+  
+/* RESPONSIVE : sur petit écran, tout en colonne */
+@media (max-width: 760px) {
+  .session-container {
+    flex-direction: column;
+    max-width: 100%;
+    width: 95%;
+  }
+
+  .form-section, .skin-section {
+    min-width: 100% !important;
+    flex: none;
+    border-radius: 12px 12px 0 0;
+    margin: 0;
+  }
+
+  .skin-section {
+    border-radius: 0 0 12px 12px;
+    box-shadow: inset 0 0 30px orange;
+    margin-top: 20px;
+  }
+}
+
+/* Style commun aux input et select */
+.form-section input,
+.form-section select,
+.form-section button {
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #2a2a2a;
+  color: white;
+  outline: none;
+  appearance: none; /* Pour enlever le style natif sur certains navigateurs */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Placeholder color for inputs */
+.form-section input::placeholder {
+  color: #aaa;
+}
+
+/* Focus pour input et select */
+.form-section input:focus,
+.form-section select:focus {
+  background-color: #3a3a3a;
+  border: 1px solid orange;
+}
+
+/* Styles spécifiques aux select pour flèche personnalisée */
+.form-section select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='white' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 6px;
+  padding-right: 40px; /* espace pour la flèche */
+}
+
+/* Bouton */
+.form-section button {
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-section button:hover {
+  background-color: darkorange;
+}

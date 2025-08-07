@@ -1,7 +1,6 @@
 let marqueurs = [];
 
 
-
 const chargerToutesLesCartes = async () => {
   const promesses = [];
 
@@ -72,8 +71,6 @@ matches.slice(0, 5).forEach(match => {
 
 resultBox.style.display = 'block';
 });
-
-
 
 // Démarrage
 chargerToutesLesCartes();

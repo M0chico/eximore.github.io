@@ -77,29 +77,6 @@ body, html {
   }
 }
 
-/* HEADER MODERNE */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: linear-gradient(to right, #0d0d0d, #1a1a1a);
-  border-bottom: 2px solid #1e90ff;
-  flex-wrap: wrap;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .logo-link {
   text-decoration: none;
 }
@@ -167,9 +144,6 @@ header {
   font-weight: bold;
 }
 
-.header-right {
-  position: relative;
-}
 
 .search-result {
   display: none;
@@ -300,3 +274,61 @@ header {
   font-size: 0.95rem;
   color: #ccc;
 }
+
+/* Header : 3 zones, bouton fixé en haut à droite */
+header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* gauche - centre - droite */
+  align-items: flex-start; /* 🔹 aligne le bouton en haut */
+  padding: 15px 30px;
+  background: linear-gradient(to right, #0d0d0d, #1a1a1a);
+  border-bottom: 2px solid #1e90ff;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end; /* pousse à droite */
+  align-items: flex-start;  /* colle en haut */
+  gap: 10px;
+}
+
+/* Bouton style noir */
+.session-button {
+  background: #1b1b1b; /* Noir foncé */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+
+.session-button:hover {
+  background: #2a2a2a; /* Noir un peu plus clair */
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.4);
+}
+
+.session-button:active {
+  background: #1b1b1b; /* Noir foncé */
+  transform: translateY(2px);
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+}
+
+
+

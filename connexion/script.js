@@ -1,7 +1,6 @@
 let marqueurs = [];
 
 
-
 const chargerToutesLesCartes = async () => {
   const promesses = [];
 
@@ -73,7 +72,29 @@ matches.slice(0, 5).forEach(match => {
 resultBox.style.display = 'block';
 });
 
+  const pseudoInput = document.getElementById("pseudo");
+  const skinPreview = document.getElementById("skinPreview");
 
+  // Changer l'image selon le pseudo
+  pseudoInput.addEventListener("input", () => {
+    const pseudo = pseudoInput.value.trim() || "Steve";
+    skinPreview.src = `https://mc-heads.net/body/${pseudo}/left`;
+  });
+
+  const form = document.getElementById("sessionForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const sessionData = {
+      pseudo: document.getElementById("pseudo").value,
+      classe: document.getElementById("classe").value,
+      race: document.getElementById("race").value,
+    };
+
+    localStorage.setItem("session", JSON.stringify(sessionData));
+    location.reload();
+  });
 
 // Démarrage
 chargerToutesLesCartes();
