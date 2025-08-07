@@ -118,7 +118,7 @@ function filterMarkers() {
     const mouseY = (e.clientY - rect.top);
     const prevZoom = zoom;
     const zoomAmount = e.deltaY < 0 ? 0.1 : -0.1;
-    zoom = Math.min(3, Math.max(1, zoom + zoomAmount));
+    zoom = Math.min(6, Math.max(1, zoom + zoomAmount));
 
     const dx = mouseX / prevZoom;
     const dy = mouseY / prevZoom;
@@ -272,3 +272,42 @@ window.addEventListener('DOMContentLoaded', async () => {
   showMarkerDetails(marker);
 });
   
+
+
+// Quand on clique sur l'image du marqueur
+document.getElementById('marker-image').addEventListener('click', () => {
+  const imgSrc = document.getElementById('marker-image').src;
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-image');
+  
+  modalImg.src = imgSrc;
+  modal.style.display = 'flex';
+});
+
+// Fermer via bouton ✖
+window.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById('close-image-modal');
+  const modal = document.getElementById('image-modal');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        modal.style.display = 'none';
+      }
+    });
+  }
+});
+
+
+// Fermer en cliquant en dehors de l'image
+document.getElementById('image-modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.style.display = 'none';
+  }
+});
