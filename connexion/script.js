@@ -74,12 +74,13 @@ resultBox.style.display = 'block';
 
 // Fonction pour sauvegarder les données dans localStorage
 function saveFormData() {
+  const classe = document.getElementById('classe').value;
   localStorage.setItem('pseudo', document.getElementById('pseudo').value);
-  localStorage.setItem('classe', document.getElementById('classe').value);
+  localStorage.setItem('classe', classe);
+  localStorage.setItem('selectedClass', classe); // on sauvegarde aussi selectedClass ici
   localStorage.setItem('race', document.getElementById('race').value);
 }
 
-// Fonction pour charger les données depuis localStorage
 function loadFormData() {
   const pseudo = localStorage.getItem('pseudo');
   const classe = localStorage.getItem('classe');
@@ -89,24 +90,26 @@ function loadFormData() {
     document.getElementById('pseudo').value = pseudo;
     updateSkinPreview(pseudo);
   }
-  if (classe) document.getElementById('classe').value = classe;
-  if (race) document.getElementById('race').value = race;
+  if (classe) {
+    document.getElementById('classe').value = classe;
+  }
+  if (race) {
+    document.getElementById('race').value = race;
+  }
 }
 
-// Met à jour l'image skin selon le pseudo
 function updateSkinPreview(pseudo) {
-  if(pseudo && pseudo.trim() !== "") {
+  if (pseudo && pseudo.trim() !== "") {
     const url = `https://mc-heads.net/body/${encodeURIComponent(pseudo)}/left`;
     document.getElementById('skinPreview').src = url;
   } else {
-    document.getElementById('skinPreview').src = "https://mc-heads.net/body/Steve/left"; // Skin par défaut
+    document.getElementById('skinPreview').src = "https://mc-heads.net/body/Steve/left";
   }
 }
 
 window.addEventListener('load', () => {
   loadFormData();
 
-  // Sauvegarde à chaque modification
   document.getElementById('pseudo').addEventListener('input', (e) => {
     saveFormData();
     updateSkinPreview(e.target.value);
@@ -115,13 +118,13 @@ window.addEventListener('load', () => {
   document.getElementById('classe').addEventListener('change', saveFormData);
   document.getElementById('race').addEventListener('change', saveFormData);
 
-  // Optionnel: Gestion du formulaire si tu veux intercepter la soumission
   document.getElementById('sessionForm').addEventListener('submit', (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
-    alert('Session créée avec succès !');
-    // Ici tu peux faire ce que tu veux à la soumission (envoi, stockage, etc.)
+    e.preventDefault();
+    alert("Session créée !");
+    // Ici tu peux rediriger vers stuff/index.html par exemple
   });
 });
+
 
 
 // Démarrage

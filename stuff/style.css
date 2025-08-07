@@ -406,10 +406,8 @@ header {
   border-radius: 12px;
   background: #000;
 }
-.highlight {
-  background-color: gold;
-  color: black;
+.class-btn.highlighted {
+  box-shadow: 0 0 10px 3px orange;
   border: 2px solid orange;
-  box-shadow: 0 0 10px gold;
+  font-weight: bold;
 }
-

@@ -73,6 +73,22 @@ matches.slice(0, 5).forEach(match => {
 resultBox.style.display = 'block';
 });
 
+window.addEventListener('load', () => {
+  // Récupérer la classe depuis localStorage
+  const selectedClass = localStorage.getItem('classe');
+
+  const buttons = document.querySelectorAll('.class-btn');
+
+  buttons.forEach(btn => {
+    const btnClass = btn.getAttribute('data-class');
+    if (btnClass === selectedClass) {
+      btn.classList.add('highlighted');
+    } else {
+      btn.classList.remove('highlighted');
+    }
+  });
+});
+
 
 
 // Démarrage
