@@ -72,29 +72,57 @@ matches.slice(0, 5).forEach(match => {
 resultBox.style.display = 'block';
 });
 
-  const pseudoInput = document.getElementById("pseudo");
-  const skinPreview = document.getElementById("skinPreview");
+// Fonction pour sauvegarder les données dans localStorage
+function saveFormData() {
+  localStorage.setItem('pseudo', document.getElementById('pseudo').value);
+  localStorage.setItem('classe', document.getElementById('classe').value);
+  localStorage.setItem('race', document.getElementById('race').value);
+}
 
-  // Changer l'image selon le pseudo
-  pseudoInput.addEventListener("input", () => {
-    const pseudo = pseudoInput.value.trim() || "Steve";
-    skinPreview.src = `https://mc-heads.net/body/${pseudo}/left`;
+// Fonction pour charger les données depuis localStorage
+function loadFormData() {
+  const pseudo = localStorage.getItem('pseudo');
+  const classe = localStorage.getItem('classe');
+  const race = localStorage.getItem('race');
+
+  if (pseudo) {
+    document.getElementById('pseudo').value = pseudo;
+    updateSkinPreview(pseudo);
+  }
+  if (classe) document.getElementById('classe').value = classe;
+  if (race) document.getElementById('race').value = race;
+}
+
+// Met à jour l'image skin selon le pseudo
+function updateSkinPreview(pseudo) {
+  if(pseudo && pseudo.trim() !== "") {
+    const url = `https://mc-heads.net/body/${encodeURIComponent(pseudo)}/left`;
+    document.getElementById('skinPreview').src = url;
+  } else {
+    document.getElementById('skinPreview').src = "https://mc-heads.net/body/Steve/left"; // Skin par défaut
+  }
+}
+
+window.addEventListener('load', () => {
+  loadFormData();
+
+  // Sauvegarde à chaque modification
+  document.getElementById('pseudo').addEventListener('input', (e) => {
+    saveFormData();
+    updateSkinPreview(e.target.value);
   });
 
-  const form = document.getElementById("sessionForm");
+  document.getElementById('classe').addEventListener('change', saveFormData);
+  document.getElementById('race').addEventListener('change', saveFormData);
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const sessionData = {
-      pseudo: document.getElementById("pseudo").value,
-      classe: document.getElementById("classe").value,
-      race: document.getElementById("race").value,
-    };
-
-    localStorage.setItem("session", JSON.stringify(sessionData));
-    location.reload();
+  // Optionnel: Gestion du formulaire si tu veux intercepter la soumission
+  document.getElementById('sessionForm').addEventListener('submit', (e) => {
+    e.preventDefault(); // Empêche le rechargement de la page
+    alert('Session créée avec succès !');
+    // Ici tu peux faire ce que tu veux à la soumission (envoi, stockage, etc.)
   });
+});
+
 
 // Démarrage
 chargerToutesLesCartes();
