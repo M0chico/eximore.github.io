@@ -73,7 +73,7 @@ resultBox.style.display = 'block';
 });
 
 window.addEventListener('load', () => {
-  const basePath = '../../stuff/image-archer/'; // Modifie ici selon ta classe / chemin
+  const basePath = '../../stuff/image-assassin/'; // Modifie ici selon ta classe / chemin
   const maxImagesPerLevel = 10; // max d'images qu'on essaie par niveau
 
   // On récupère tous les conteneurs avec data-level
