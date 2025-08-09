@@ -93,7 +93,7 @@ function testImage(src){
 
 /* Build candidate paths for given class folder and level */
 function buildCandidates(classeFolder, level, maxIndex=6){
-  const base = `../../stuff/image-${classeFolder}`;
+  const base = `../stuff/image-${classeFolder}`;
   const arr = [];
   arr.push(`${base}/screen${level}.png`);
   arr.push(`${base}/screen${level}-1.png`);
