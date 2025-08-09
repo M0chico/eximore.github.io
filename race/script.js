@@ -72,5 +72,34 @@ matches.slice(0, 5).forEach(match => {
 resultBox.style.display = 'block';
 });
 
+window.addEventListener('load', () => {
+  // Récupérer la race depuis localStorage
+  const selectedRace = localStorage.getItem('race');
+
+  // Sélectionner tous les éléments race-btn
+  const raceButtons = document.querySelectorAll('.race-btn');
+
+  raceButtons.forEach(btn => {
+    const btnRace = btn.getAttribute('data-race');
+
+    if (btnRace === selectedRace) {
+      btn.classList.add('highlighted');
+    } else {
+      btn.classList.remove('highlighted');
+    }
+
+    // Ajouter un gestionnaire clic pour sélectionner une race
+    btn.addEventListener('click', () => {
+      // Sauvegarder la race cliquée
+      localStorage.setItem('race', btnRace);
+
+      // Mettre à jour le highlight
+      raceButtons.forEach(b => b.classList.remove('highlighted'));
+      btn.classList.add('highlighted');
+    });
+  });
+});
+
+
 // Démarrage
 chargerToutesLesCartes();

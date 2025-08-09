@@ -407,3 +407,48 @@ header {
   background: #000;
 }
 
+.class-btn.class-info {
+  cursor: default;
+  padding: 30px 25px;
+  min-height: 260px; /* hauteur minimale plus grande */
+  width: 450px; /* largeur un peu plus grande */
+  font-weight: normal;
+  font-size: 1.15em;
+  line-height: 1.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.class-btn.class-info h3 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+.class-btn.class-info p {
+  color: #ccc;
+  max-width: 420px; /* limite la largeur du texte */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.class-btn.class-info:hover {
+  background: linear-gradient(145deg, #50546e, #3c3f50);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  transform: scale(1.08);
+}
+
+.race-btn.highlighted {
+  box-shadow: 0 0 10px 3px orange;
+  border: 2px solid orange;
+  font-weight: bold;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+
+

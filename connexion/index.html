@@ -42,25 +42,29 @@
   <div class="form-section">
     <h2>Créer ta session</h2>
     <form id="sessionForm">
-<input type="text" id="pseudo" placeholder="Pseudo" required>
+      <input type="text" id="pseudo" placeholder="Pseudo" required>
 
-<select id="classe" required>
-  <option value="" disabled selected>Choisir une classe</option>
-  <option value="guerriere">Guerrière</option>
-  <option value="assassin">Assassin</option>
-  <option value="mage">Mage</option>
-  <option value="shaman">Shaman</option>
-  <option value="archer">Archer</option>
-  <option value="martial_artist">Martial Artist</option>
-</select>
+      <select id="classe" required>
+        <option value="" disabled selected>Choisir une classe</option>
+        <option value="guerriere">Guerrière</option>
+        <option value="assassin">Assassin</option>
+        <option value="mage">Mage</option>
+        <option value="shaman">Shaman</option>
+        <option value="archer">Archer</option>
+        <option value="martial_artist">Martial Artist</option>
+      </select>
 
-<select id="race" required>
-  <option value="" disabled selected>Choisir une race</option>
-  <option value="sylphs">Sylphs</option>
-  <option value="salamanders">Salamanders</option>
-  <option value="spriggans">Spriggans</option>
-  <option value="gnomes">Gnomes</option>
-</select>
+      <select id="race" required>
+        <option value="" disabled selected>Choisir une race</option>
+        <option value="sylphs">Sylphs</option>
+        <option value="salamanders">Salamanders</option>
+        <option value="spriggans">Spriggans</option>
+        <option value="gnomes">Gnomes</option>
+      </select>
+
+      <!-- Nouveau champ niveau -->
+      <input type="number" id="niveau" placeholder="Niveau" min="1" max="100" required>
+
       <button type="submit">Créer la session</button>
     </form>
   </div>
