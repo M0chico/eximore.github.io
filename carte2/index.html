@@ -22,6 +22,7 @@
     <option value="quest">Quête</option>
     <option value="ressource">Ressource</option>
     <option value="lieu">Lieu</option>
+    <option value="forge">Forge</option>
   </select>
   <textarea class="mod-only" id="description" placeholder="Description" rows="4" style="resize: vertical;"></textarea>
   <input class="mod-only" id="coords" placeholder="Coordonnées (x y z)" />
@@ -33,6 +34,7 @@
   <button class="filter-btn" onclick="toggleCategory('quest')">Afficher/Masquer Quête</button>
   <button class="filter-btn" onclick="toggleCategory('ressource')">Afficher/Masquer Ressource</button>
   <button class="filter-btn" onclick="toggleCategory('lieu')">Afficher/Masquer Lieu</button>
+  <button class="filter-btn" onclick="toggleCategory('forge')">Afficher/Masquer Forge</button>
   <hr />
   <input id="search" placeholder="Rechercher..." oninput="filterMarkers()" />
   <button onclick="resetView()">🔄 Recentrer</button>
