@@ -103,7 +103,7 @@
     "y": 395.88321685791016,
     "name": "Mine",
     "category": "ressource",
-    "description": "Charbon/Cuivre/Fer",
+    "description": "Charbon , Cuivre et Fer de plus un PNJ permet de craft les lingots de cuivre et de fer",
     "coords": "x 2400 z 3500",
     "_internalId": "Mine_360.5959777832031_395.88321685791016"
   },

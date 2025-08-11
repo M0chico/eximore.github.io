@@ -18,7 +18,8 @@
     mob: '🐺',
     quest: '❗',
     ressource: '⛏️',
-    lieu: '🏠'
+    lieu: '🏠',
+    forge:'⚒️'
   };
 
   
