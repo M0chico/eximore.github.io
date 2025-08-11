@@ -356,6 +356,31 @@
     "name": "Bois",
     "category": "ressource",
     "description": "",
+    "coords": "",
+    "_internalId": "Bois_454.9380197832659_407.22154186617917"
+  },
+  {
+    "x": 298.9021402994792,
+    "y": 482.5458984375,
+    "name": "Forge Armure",
+    "category": "forge",
+    "description": "armure et équipement de base utile du niveau 1 a 3",
+    "coords": ""
+  },
+  {
+    "x": 373.4136149088542,
+    "y": 275.20408121744794,
+    "name": "Forge Intérieur",
+    "category": "forge",
+    "description": "armure et équipement DPS de niveau 5 pour toute les class ce trouve a l'intérieur du donjon",
+    "coords": ""
+  },
+  {
+    "x": 473.629150390625,
+    "y": 156.47964477539062,
+    "name": "Forge Tolbana",
+    "category": "forge",
+    "description": "armure et équipement les plus puissant du palier 1",
     "coords": ""
   }
 ]
