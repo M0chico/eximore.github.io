@@ -407,3 +407,12 @@ header {
   background: #000;
 }
 
+.clickable-img {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.clickable-img:hover {
+  transform: scale(1.02); /* Zoom léger */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Ombre */
+}
