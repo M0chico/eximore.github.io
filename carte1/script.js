@@ -39,6 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function refreshMarkers() {
+  let val = document.getElementById("search").value.toLowerCase();
+
+  markers.forEach(m => {
+    let match = (m.data.name + " " + m.data.description).toLowerCase().includes(val);
+
+    if (match && !hiddenCategories.has(m.category)) {
+      map.addLayer(m);
+    } else {
+      map.removeLayer(m);
+    }
+  });
+}
+
 function toggleCategory(cat) {
   const btn = document.querySelector(`.filter-btn[onclick="toggleCategory('${cat}')"]`);
 
@@ -62,6 +76,8 @@ function toggleCategory(cat) {
     btn.classList.remove("active");
     btn.classList.add("inactive");
   }
+
+  refreshMarkers();
 }
 
 const categoryIcons = {
@@ -211,9 +227,12 @@ loadMarkers();
 // === Recherche ===
 document.getElementById("search").addEventListener("input", function() {
   let val = this.value.toLowerCase();
+
   markers.forEach(m => {
     let match = (m.data.name + " " + m.data.description).toLowerCase().includes(val);
-    if (match) {
+
+    if (match && !hiddenCategories.has(m.category)) {
+      // Correspond à la recherche + pas dans une catégorie cachée
       map.addLayer(m);
     } else {
       map.removeLayer(m);
