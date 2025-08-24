@@ -13,56 +13,20 @@ body {
     }
 
 #map-container {
-  position: relative;
-  width: 1000px;
-  height: 700px;
-  overflow: hidden;
-
-  /* Centrage flex */
+  flex: 1;
   display: flex;
-  justify-content: center; /* centre horizontalement */
-  align-items: center;     /* centre verticalement */
+  justify-content: center;
+  align-items: center;
 }
 
 #map {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
   width: 800px;
-  height: 600px;
-  transform-origin: 0 0;
-  position: relative; /* plus besoin d'absolute avec flex centering */
+  height: 800px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  background: black; /* fond noir */
 }
-
-    .marker {
-      position: absolute;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .marker[data-category="mob"]  { color: red; }
-    .marker[data-category="quest"] { color: yellow; }
-    .marker[data-category="ressource"] { color: lime; }
-    .marker[data-category="lieu"] { color: cyan; }
-
-    .marker:hover::after {
-      content: attr(data-name);
-      white-space: pre;
-      position: absolute;
-      background: rgba(20,20,20,0.95);
-      color: #eee;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
-      top: 30px;
-      left: 10px;
-      width: 220px;
-      z-index: 1000;
-      font-size: 14px;
-      font-family: monospace;
-    }
-
     #toggle-btn {
       position: absolute;
       top: 10px;
@@ -84,18 +48,6 @@ body {
     .filter-btn {
       margin-top: 5px;
       width: 100%;
-    }
-
-    #mod-code {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      width: 100px;
-      z-index: 1000;
-    }
-
-    .mod-only {
-      display: none;
     }
 
     button, .filter-btn {
@@ -135,25 +87,6 @@ input:focus, select:focus {
 #toggle-btn:hover {
   background: #555;
 }
-.marker-panel {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 400px;
-  height: 100%;
-  background: #111;
-  color: white;
-  border-left: 1px solid #444;
-  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
-  transition: right 0.3s ease;
-  z-index: 1001;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.marker-panel.open {
-  right: 0;
-}
 
 .close-btn {
   position: absolute;
@@ -188,81 +121,6 @@ input:focus, select:focus {
   opacity: 0;
 }
 
-/* Le panneau latéral */
-#marker-panel {
-  position: fixed;
-  top: 0;
-  right: -320px; /* caché à droite */
-  width: 320px;
-  max-width: 90vw; /* au max 90% largeur écran */
-  height: 100vh; /* prend toute la hauteur */
-  overflow-y: auto; /* scroll si contenu trop grand */
-  padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  background: rgba(34, 34, 34, 0.95);
-  border-right: 2px solid #444;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.4);
-}
-
-/* Quand ouvert, il glisse à droite (visible) */
-#marker-panel.open {
-  right: 0;
-}
-
-/* Contenu dans le panneau */
-.marker-panel-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Bouton fermer (croix) */
-.close-btn {
-  cursor: pointer;
-  font-size: 20px;
-  align-self: flex-end;
-  user-select: none;
-  margin-bottom: 10px;
-}
-
-/* Image : taille max fixée, ratio conservé */
-#marker-image {
-  max-width: 100%;
-  max-height: 200px; /* tu peux ajuster */
-  object-fit: contain; /* garde le ratio sans déformation */
-  border-radius: 8px;
-  margin-bottom: 15px;
-  display: block; /* pour enlever espaces blancs */
-}
-
-/* Texte */
-#marker-title {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
-  line-height: 1.2;
-}
-
-
-/* Responsive : sur petits écrans */
-@media (max-width: 400px) {
-  #marker-panel {
-    width: 100vw;
-    max-width: 100vw;
-    padding: 15px;
-  }
-  #marker-image {
-    max-height: 150px;
-  }
-}
-
-@media (max-width: 950px) {
-  #marker-tip {
-    display: none;
-  }
-}
 
 #sidebar {
   position: fixed;
@@ -275,7 +133,7 @@ input:focus, select:focus {
   padding: 1rem;
   overflow-y: auto;
   transition: transform 0.3s ease;
-  z-index: 10;
+  z-index: 1000;
 }
 
 #sidebar-toggle {
@@ -291,7 +149,7 @@ input:focus, select:focus {
   border: none;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  z-index: 1001;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -396,4 +254,152 @@ textarea, select {
   to { transform: scale(1); opacity: 1; }
 }
 
+/* Le panneau du marqueur */
+#marker-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
+  background: rgba(30, 30, 30, 0.95); /* fond sombre */
+  color: #eee;
+  padding: 12px 10px 10px 10px;
+  border-top: 2px solid #555; /* délimitation entre haut et bas */
+
+  display: none; /* caché par défaut */
+  flex-direction: column;
+  align-items: center;
+
+  height: 50%; /* prend la moitié basse de la sidebar */
+  overflow-y: auto; /* scroll si trop de contenu */
+  box-sizing: border-box;
+}
+
+@media (max-width: 950px) {
+  #marker-tip {
+    display: none;
+  }
+}
+
+/* Titre */
+#marker-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0 10px;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #444; /* ligne sous le titre */
+  padding-bottom: 4px;
+}
+
+/* Image */
+#marker-image {
+  max-width: 90%;
+  max-height: 120px;
+  border-radius: 6px;
+  margin: 8px 0;
+  object-fit: cover;
+  border: 1px solid #555;
+}
+
+/* Description et coords */
+#marker-description-block,
+#marker-coords-block {
+  width: 100%;
+  font-size: 13px;
+  margin: 6px 0;
+  text-align: left;
+}
+
+/* Bouton fermer */
+#marker-panel .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #bbb;
+}
+#marker-panel .close-btn:hover {
+  color: #fff;
+}
+
+
+
+.filter-btn {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  background: #28a745;
+  color: #eee;
+}
+
+.filter-btn:hover {
+  background: #555;
+}
+
+.filter-btn.active {
+  background: #28a745; /* vert = activé */
+  color: white;
+}
+
+.filter-btn.inactive {
+  background: #a72828; /* rouge = désactivé */
+  color: white;
+}
+
+/* Image : taille max fixée, ratio conservé */
+#marker-image {
+  max-width: 100%;
+  max-height: 200px; /* tu peux ajuster */
+  object-fit: contain; /* garde le ratio sans déformation */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: block; /* pour enlever espaces blancs */
+}
+
+/* Modal de l'image */
+#image-modal {
+  display: none; /* caché par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* Image agrandie dans le modal */
+#image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  cursor: default;
+}
+
+/* Bouton de fermeture */
+#close-image-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 28px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+#close-image-modal:hover {
+  color: #ff5555;
+}

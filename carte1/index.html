@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Carte Interactive Multi-cartes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="../image.png">
 </head>
@@ -10,24 +11,14 @@
   <div id="marker-tip" class="fade-tip">
   🛈 Cliquez sur les icônes pour avoir plus d'infos
 </div>
+
 <button id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+
 <div id="sidebar">
 <button class="return-button" onclick="window.location.href='../index.html'">
   ← Revenir au HUB
 </button>
-  <h3 class="mod-only">Ajouter un marqueur</h3>
-  <input class="mod-only" id="name" placeholder="Nom" />
-  <select class="mod-only" id="category">
-    <option value="mob">Mob</option>
-    <option value="quest">Quête</option>
-    <option value="ressource">Ressource</option>
-    <option value="lieu">Lieu</option>
-    <option value="forge">Forge</option>
-  </select>
-  <textarea class="mod-only" id="description" placeholder="Description" rows="4" style="resize: vertical;"></textarea>
-  <input class="mod-only" id="coords" placeholder="Coordonnées (x y z)" />
-  <button class="mod-only" onclick="enablePlacing()">Placer un marqueur</button>
-  <button class="mod-only" onclick="exportMarkers()">Exporter JSON</button>
 
   <h4>Filtres :</h4>
   <button class="filter-btn" onclick="toggleCategory('mob')">Afficher/Masquer Mob</button>
@@ -37,32 +28,33 @@
   <button class="filter-btn" onclick="toggleCategory('forge')">Afficher/Masquer Forge</button>
   <hr />
   <input id="search" placeholder="Rechercher..." oninput="filterMarkers()" />
-  <button onclick="resetView()">🔄 Recentrer</button>
+  <button onclick="resetView()">🔄 Recentrer</button>  
+
+
+
+<div id="marker-panel">
+  <span id="close-marker-panel" class="close-btn">✖</span>
+  <h2 id="marker-title"></h2>
+  <img id="marker-image" src="" alt="ERROR" style="cursor:pointer;" />
+  <p id="marker-description-block"><strong>Description :</strong><br><span id="marker-description"></span></p>
+  <p id="marker-coords-block"><strong>Coordonnées :</strong><br><span id="marker-coords"></span></p>
 </div>
 
-<input id="mod-code" placeholder="Code admin" />
+</div>
+<!-- Modal pour image agrandie -->
+<div id="image-modal">
+  <span id="close-image-modal">✖</span>
+  <img id="modal-image" src="" alt="IMAGE" />
+</div>
+
+</div>
+
 <div id="map-container">
   <div id="map"></div>
 </div>
 
 
-<div id="marker-panel" class="marker-panel">
-  <div class="marker-panel-content">
-    <span id="close-marker-panel" class="close-btn">✖</span>
-    <h2 id="marker-title"></h2>
-    <img id="marker-image" src="" alt="Image du marqueur" />
-<p id="marker-description-block"><strong>Description :</strong><br><span id="marker-description"></span></p>
-<p id="marker-coords-block"><strong>Coordonnées :</strong><br><span id="marker-coords"></span></p>
-  </div>
-
-
-  
-<script src="script.js"></script>  
-</div>
-
-<div id="image-modal" class="image-modal">
-  <span class="close-btn" id="close-image-modal">✖</span>
-  <img id="modal-image" src="" alt="Image agrandie" />
-</div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
