@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Éditeur de Marqueurs - Modérateur</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+    body { display: flex; font-family: sans-serif; margin:0; }
+    #map { width: 70%; height: 100vh; }
+    #sidebar {
+      width: 30%; padding: 10px; overflow-y: auto;
+      border-left: 2px solid #ccc; background: #f8f8f8;
+    }
+    .marker-item { border: 1px solid #aaa; margin: 5px 0; padding: 5px; border-radius: 5px; }
+    .marker-item h4 { margin: 0; }
+    input, select, textarea { width: 95%; margin-bottom: 5px; }
+    #map-file { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="sidebar">
+    <h2>Éditeur de Marqueurs</h2>
+
+    <label>Charger une map :</label><br>
+    <input type="file" id="map-file" accept="image/*"><br>
+
+    <input id="name" placeholder="Nom"><br>
+    <select id="category">
+      <option value="mob">🐺 Mob</option>
+      <option value="quest">❗ Quête</option>
+      <option value="ressource">⛏️ Ressource</option>
+      <option value="lieu">🏠 Lieu</option>
+      <option value="forge">⚒️ Forge</option>
+    </select><br>
+    <textarea id="description" placeholder="Description"></textarea><br>
+    <button onclick="startPlacing()">Placer sur carte</button>
+    <button onclick="exportMarkers()">Exporter JSON</button>
+    <hr>
+    <div id="marker-list"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 2.5 });
+    let mapOverlay = null;
+    let mapWidth = 2000;
+    let mapHeight = 2000;
+    let bounds = [[0,0],[mapHeight,mapWidth]];
+    map.fitBounds(bounds);
+
+    let markersData = [];
+    let markers = [];
+
+    // Fonction pour charger une image de carte personnalisée
+    document.getElementById('map-file').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        if (mapOverlay) map.removeLayer(mapOverlay);
+        const img = new Image();
+        img.onload = () => {
+          mapWidth = img.width;
+          mapHeight = img.height;
+          bounds = [[0,0],[mapHeight,mapWidth]];
+          mapOverlay = L.imageOverlay(evt.target.result, bounds).addTo(map);
+          map.fitBounds(bounds);
+        }
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function startPlacing() {
+      map.once("click", function(e) {
+        const name = document.getElementById("name").value;
+        const category = document.getElementById("category").value;
+        const description = document.getElementById("description").value;
+
+        const emoji = getCategoryEmoji(category);
+        const data = { name, category, emoji, description, coords: [e.latlng.lat, e.latlng.lng] };
+        markersData.push(data);
+        addMarker(data);
+        refreshList();
+      });
+    }
+
+    function getCategoryEmoji(category) {
+      switch(category) {
+        case 'mob': return '🐺';
+        case 'quest': return '❗';
+        case 'ressource': return '⛏️';
+        case 'lieu': return '🏠';
+        case 'forge': return '⚒️';
+        default: return '';
+      }
+    }
+
+    function addMarker(data) {
+      let icon = L.divIcon({ className: "custom-icon", html: `${data.emoji}` });
+      let marker = L.marker(data.coords, { icon }).addTo(map);
+      marker.bindTooltip(`${data.emoji} ${data.name}`);
+      markers.push(marker);
+    }
+
+    function refreshList() {
+      let container = document.getElementById("marker-list");
+      container.innerHTML = "";
+      markersData.forEach((m,i) => {
+        container.innerHTML += `
+          <div class="marker-item">
+            <h4>${m.emoji} ${m.name} (${m.category})</h4>
+            <p>${m.description}</p>
+            <button onclick="deleteMarker(${i})">❌ Supprimer</button>
+          </div>
+        `;
+      });
+    }
+
+    function deleteMarker(i) {
+      map.removeLayer(markers[i]);
+      markersData.splice(i,1);
+      markers.splice(i,1);
+      refreshList();
+    }
+
+    function exportMarkers() {
+      const blob = new Blob([JSON.stringify(markersData, null, 2)], {type:"application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "marqueurs.json";
+      a.click();
+    }
+  </script>
+</body>
+</html>
