@@ -28,9 +28,21 @@ var markers = [];     // objets Leaflet
 // === Toggle catégorie ===
 let hiddenCategories = new Set();
 
+// Quand tu ajoutes un marqueur :
+
+document.addEventListener("DOMContentLoaded", () => {
+  const lieuBtn = document.querySelector(`.filter-btn[onclick="toggleCategory('lieu')"]`);
+  if (lieuBtn) {
+    lieuBtn.classList.remove("active");
+    lieuBtn.classList.add("inactive");
+    hiddenCategories.add("lieu");
+  }
+});
+
 function toggleCategory(cat) {
   const btn = document.querySelector(`.filter-btn[onclick="toggleCategory('${cat}')"]`);
 
+  
   if (hiddenCategories.has(cat)) {
     // Réaffiche
     markers.forEach(m => {
@@ -100,22 +112,29 @@ function addMarker(data) {
     return;
   }
 
-  let icon = categoryIcons[data.category] || categoryIcons["mob"]; // fallback
-
-let marker = L.marker([data.coords[0], data.coords[1]], {
+  // Création du marqueur
+  let marker = L.marker([data.coords[0], data.coords[1]], {
     title: data.name,
-    icon: categoryIcons[data.category] || testIcon
-}).addTo(map);
+    icon: categoryIcons[data.category] || categoryIcons["mob"] // fallback
+  }).addTo(map);
 
   marker.category = data.category;
   marker.data = data;
 
+  // Clique = ouverture du panel
   marker.on("click", function() {
     openMarkerPanel(marker.data);
   });
 
   markers.push(marker);
+
+  // ⚡ Si la catégorie est cachée, on retire directement le marker
+  if (hiddenCategories.has(data.category)) {
+    map.removeLayer(marker);
+  }
 }
+
+
 
 // === Panel custom ===
 function openMarkerPanel(data) {
@@ -129,18 +148,6 @@ function openMarkerPanel(data) {
   } else {
     descBlock.style.display = "none";
   }
-
-  // Coordonnées
-const coordsBlock = document.getElementById("marker-coords-block");
-if (data.coords && data.coords.length) {
-  // Arrondir les coordonnées
-  const roundedCoords = data.coords.map(coord => Math.round(coord));
-  document.getElementById("marker-coords").textContent = roundedCoords.join(", ");
-  coordsBlock.style.display = "block";
-} else {
-  coordsBlock.style.display = "none";
-}
-
   // Image auto (nom du fichier basé sur le nom du marker)
   const fileName = data.name.replace(/\s+/g, '_');
   const imagePath = `images/${fileName}.png`;
