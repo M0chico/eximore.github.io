@@ -128,27 +128,33 @@ function addMarker(data) {
     return;
   }
 
-  // Création du marqueur
+  let icon = categoryIcons[data.category] || categoryIcons["mob"]; // fallback
+
   let marker = L.marker([data.coords[0], data.coords[1]], {
     title: data.name,
-    icon: categoryIcons[data.category] || categoryIcons["mob"] // fallback
-  }).addTo(map);
+    icon: icon
+  });
+
+  // ⚡ Ajout du tooltip qui s’affiche au survol
+  marker.bindTooltip(data.name, {
+    permanent: false,   // false = seulement au survol
+    direction: "top",   // affiche au-dessus du marqueur
+    offset: [0, -10]    // petit décalage pour ne pas coller l’icône
+  });
 
   marker.category = data.category;
   marker.data = data;
 
-  // Clique = ouverture du panel
   marker.on("click", function() {
     openMarkerPanel(marker.data);
   });
 
   markers.push(marker);
 
-  // ⚡ Si la catégorie est cachée, on retire directement le marker
-  if (hiddenCategories.has(data.category)) {
-    map.removeLayer(marker);
-  }
+  // Appliquer les filtres/recherche directement (au lieu d'addTo(map) direct)
+  refreshMarkers();
 }
+
 
 
 
