@@ -283,14 +283,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       showMarkerDetails(marker); // ouvre le panel
     }
 
-    // Optionnel : simuler un clic sur le marqueur sur la carte si tu utilises Leaflet ou autre
-    if (typeof map !== 'undefined' && marker.coords?.length === 2) {
-      map.setView([marker.coords[1], marker.coords[0]], 15); // recentre la carte
-      // Si tes marqueurs sont des objets Leaflet, tu peux aussi faire :
-      // let leafletMarker = markerObjects.find(m => m._internalId === marker._internalId);
-      // if (leafletMarker) leafletMarker.fire('click');
-    }
-
   } catch (err) {
     console.error("Erreur lors du chargement du marqueur depuis l'URL :", err);
   }
