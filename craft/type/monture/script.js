@@ -5,7 +5,7 @@ const chargerToutesLesCartes = async () => {
   const promesses = [];
 
   for (let i = 1; i <= 100; i++) {
-    const chemin = `../../carte${i}/marqueurs.json`;
+    const chemin = `../../../carte${i}/marqueurs.json`;
     const indexCarte = i;
 
     promesses.push(
@@ -49,11 +49,11 @@ input.addEventListener('input', () => {
 
 matches.slice(0, 5).forEach(match => {
   const shortDesc = match.description.split('\n').slice(0, 2).join('<br>');
-  const url = `../../${match.carte}/index.html?entite=${encodeURIComponent(match.name)}`;
+  const url = `../../../${match.carte}/index.html?entite=${encodeURIComponent(match.name)}`;
 
   // Remplace les espaces dans le nom pour le nom de l'image
   const imageName = match.name.replace(/\s+/g, '_');
-  const imagePath = `../../${match.carte}/images/${imageName}.png`;
+  const imagePath = `../../../${match.carte}/images/${imageName}.png`;
 
   const result = document.createElement('a');
   result.href = url;
