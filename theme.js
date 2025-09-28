@@ -2,8 +2,8 @@
 (function(){
   const LS_KEY = 'eximore_theme';
   // <-- UTILISE DES CHEMINS ABSOLUS pour éviter les problème de pages dans des sous-dossiers
-  const DARK_IMG  = '/assets/img/sombre.png';   // <-- adapte à ton arborescence
-  const LIGHT_IMG = '/assets/img/claire.png';
+  const DARK_IMG  = 'https://m0chico.github.io/eximore.github.io/sombre.png';   // <-- adapte à ton arborescence
+  const LIGHT_IMG = 'https://m0chico.github.io/eximore.github.io/claire.png';
 
   // récupère (ou crée) l'élément .background-blur
   function getOrCreateBg(){
@@ -63,3 +63,4 @@
     });
   }
 })();
+
