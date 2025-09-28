@@ -2,7 +2,6 @@ body {
       margin: 0;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background: url('../image1.png') no-repeat center center fixed;
       background-size: cover;
       backdrop-filter: blur(14px);
       color: white;
@@ -11,6 +10,22 @@ body {
       align-items: center;
       height: 100vh;
     }
+
+/* ---------- THEME / background blur ---------- */
+.background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  transition: opacity .25s ease;
+  /* default placeholder - sera remplacé par JS */
+  background-image: url('claire.png');
+}
 
 #map-container {
   flex: 1;
@@ -403,4 +418,5 @@ textarea, select {
 #close-image-modal:hover {
   color: #ff5555;
 }
+
 
