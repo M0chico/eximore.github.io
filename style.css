@@ -44,7 +44,7 @@ body, html {
   right:16px;
   top:64px;
   width:260px;
-  background: rgba(15,15,15,0.95);
+  background: rgba(0, 0, 0, 0.95);
   border:1px solid rgba(255,255,255,0.04);
   border-radius:10px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
@@ -53,16 +53,19 @@ body, html {
   display:none; /* affiché via JS */
 }
 .settings-panel[aria-hidden="false"]{display:block}
-.settings-inner h3{margin:6px 0 10px 0}
+.settings-inner h3{
+  margin:6px 0 10px 0;
+  color: #ffffff;
+}
 .settings-inner label{display:block;margin:8px 0;font-size:14px;color:#ddd}
 .btn{
   margin-top:10px;
   background:transparent;
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid rgba(255, 255, 255, 0.384);
   padding:8px 10px;
   border-radius:6px;
   cursor:pointer;
-  color:inherit;
+  color: #ffffff;
 }
 
 
