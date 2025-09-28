@@ -41,7 +41,13 @@
 
   <div class="header-right">
     <a href="connexion/" class="session-button">Créer ta session</a>
+
+    <!-- Bouton thème / ouverture panneau paramètres -->
+    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Changer le thème (Clair / Sombre)">
+      <span class="icon">🌙</span>
+    </button>
   </div>
+
 </header>
 
   <div class="background-blur"></div>
@@ -78,7 +84,27 @@
   </a>
 </div>
 
+<!-- panneau de paramètres simple (optionnel, apparait en cliquant sur l'icône) -->
+<div id="settings-panel" class="settings-panel" aria-hidden="true">
+  <div class="settings-inner">
+    <h3>Paramètres</h3>
+    <label>
+      <input type="radio" name="theme" value="system" id="theme-system" />
+      Utiliser la préférence système
+    </label>
+    <label>
+      <input type="radio" name="theme" value="light" id="theme-light" />
+      Thème clair
+    </label>
+    <label>
+      <input type="radio" name="theme" value="dark" id="theme-dark" />
+      Thème sombre
+    </label>
 
+    <hr/>
+    <button id="settings-close" class="btn">Fermer</button>
+  </div>
+</div>
 
 
   <script src="script.js"></script>
