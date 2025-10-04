@@ -210,7 +210,7 @@
   {
     "name": "PNJ de hanaka",
     "category": "quest",
-    "description": "Genzo : 6 Crocs de Loup + 2 Eclats de Bois Magique\n\nBartok : 50 Peaux de Sanglier + 25 Crocs de Loup\n\nGreta : 15 Fleurs d'Allium + 5 Fils d'Araignée\n\nSoeur-Therra : 20 Gelées de Slime + 1 Essence de Gorbel\n\nToban : 5 Ecorces de Titan + 2 Mycélium Magique\n\nRina : 4 Fleurs d'Allium + 2 Gelées de Slime\n\nMaya : 8 Brindilles Enchanté + 2 Gelée de Slime",
+    "description": "Genzo : 6 Crocs de Loup + 2 Eclats de Bois Magique\n\nBartok : 50 Peaux de Sanglier + 25 Crocs de Loup\n\nGreta : 15 Fleurs d'Allium + 3 Fils d'Araignée\n\nSoeur-Therra : 20 Gelées de Slime + 1 Essence de Gorbel\n\nToban : 5 Ecorces de Titan + 2 Mycélium Magique\n\nRina : 4 Fleurs d'Allium + 2 Gelées de Slime\n\nMaya : 8 Brindilles Enchanté + 5 Gelée de Slime",
     "coords": [      1628,
       1428],
     "_internalId": "PNJ de hanaka_260.5959777832031_391.88321685791016"
@@ -274,7 +274,7 @@
   {
     "name": "PNJ Est",
     "category": "quest",
-    "description": "Varne : 4 Fourrures de Loup + 2 Eclats de Bois Magique + 1 Os de Squelette Supérieur\n\nElwen : 5 Fourrures de Loup\n\nMilla : 15 Fragments de Feuilles + 3 Mycélium Magique (milla se trouve a l'église au dessus)",
+    "description": "Varne : 4 Fourrures de Loup + 2 Eclats de Bois Magique + 1 Os de Squelette Supérieur",
     "coords": [      736,
       2032],
     "_internalId": "PNJ Est_342.5959777832031_497.88321685791016"
@@ -282,7 +282,7 @@
   {
     "name": "PNJ Sud",
     "category": "quest",
-    "description": "Inari : Full armure Ika\n\nOrin : 5 Minerais de Fer + 5 Corde d'Arc Sylvestre",
+    "description": "Inari : Full armure Ika\n\nOrin : 5 Minerais de Fer + 1 Corde d'Arc Sylvestre",
     "coords": [      318.5,
       1696.5],
     "_internalId": "PNJ Sud_296.5959777832031_549.8832168579102"
