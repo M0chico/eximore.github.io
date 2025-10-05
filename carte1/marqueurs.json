@@ -210,7 +210,7 @@
   {
     "name": "PNJ de hanaka",
     "category": "quest",
-    "description": "Genzo : 6 Crocs de Loup + 2 Eclats de Bois Magique\n\nBartok : 50 Peaux de Sanglier + 25 Crocs de Loup\n\nGreta : 15 Fleurs d'Allium + 3 Fils d'Araignée\n\nSoeur-Therra : 20 Gelées de Slime + 1 Essence de Gorbel\n\nToban : 5 Ecorces de Titan + 2 Mycélium Magique\n\nRina : 4 Fleurs d'Allium + 2 Gelées de Slime\n\nMaya : 8 Brindilles Enchanté + 5 Gelée de Slime",
+    "description": "Genzo : 6 Crocs de Loup + 2 Eclats de Bois Magique\n\nBartok : 25 Peaux de Sanglier + 25 Crocs de Loup\n\nGreta : 15 Fleurs d'Allium + 3 Fils d'Araignée\n\nSoeur-Therra : 20 Gelées de Slime + 1 Essence de Gorbel\n\nToban : 5 Ecorces de Titan + 2 Mycélium Magique\n\nRina : 4 Fleurs d'Allium + 2 Gelées de Slime\n\nMaya : 8 Brindilles Enchanté + 5 Gelée de Slime",
     "coords": [      1628,
       1428],
     "_internalId": "PNJ de hanaka_260.5959777832031_391.88321685791016"
@@ -218,7 +218,7 @@
   {
     "name": "PNJ de mizunari",
     "category": "quest",
-    "description": "Michelle : 10 Fragments de Feuilles\n\nMartine : 16 Epis Sauvage\n\nElwyn : 10 Ecorces Sylvestre + 10 Brindilles Enchantés + 3 Racines Ancestrales\n\nLouise : 64 Lingots de Cuivre\n\nPhares : 20 Bûches de Bois",
+    "description": "Michelle : 10 Fragments de Feuilles\n\nMartine : 16 Epis Sauvage\n\nElwyn : 10 Ecorces Sylvestre + 10 Brindilles Enchantés + 3 Racines Ancestrales\n\nLouise : 10 Lingots de Cuivre\n\nPhares : 20 Bûches de Bois",
     "coords": [      1368.6051749865626,
       3051.696090905842],
     "_internalId": "PNJ de mizunari_458.5959777832031_421.88321685791016"
@@ -290,7 +290,7 @@
   {
     "name": "PNJ Ouest",
     "category": "quest",
-    "description": "Rikyu : 25 Fragments de Feuilles + 8 Fleur d'Allium\n\nBunta :  5 Eclats Bois Magique + 5 Poussière d'Os + 3 Noyau de Slime\n\nMeiko : 5 Tissus d'Araignée + 3 Cuir Usé\n\nSaria : 50 Gelées de Slime + 10 Minerais de Fer",
+    "description": "Rikyu : 25 Fragments de Feuilles + 8 Fleur d'Allium\n\nMeiko : 5 Tissus d'Araignée + 3 Cuir Usé\n\nSaria : 50 Gelées de Slime + 10 Minerais de Fer",
     "coords": [      738,
       1382],
     "_internalId": "PNJ Ouest_250.59597778320312_494.88321685791016"
