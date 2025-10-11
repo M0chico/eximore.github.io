@@ -1,5 +1,25 @@
 [
   {
+    "name": "Mine de Geldorak",
+    "category": "donjon",
+    "emoji": "🏰",
+    "description": "",
+    "coords": [
+      1146.25,
+      4188.013765108046
+    ]
+  },
+  {
+    "name": "Xal'Zirith",
+    "category": "donjon",
+    "emoji": "🏰",
+    "description": "",
+    "coords": [
+      3848,
+      955.0388230985227
+    ]
+  },
+  {
     "name": "Sanglier",
     "category": "mob",
     "description": "il y a les sangliers et Pumba \n\n Sanglier Frénétique : Peau de Sanglier 50% \n\n Pumba : Peau de Sanglier 65%",
@@ -358,8 +378,8 @@
       1688.5]
   },
   {
-    "name": "Forge Intérieur",
-    "category": "forge",
+    "name": "Donjon labyrinthe",
+    "category": "donjon",
     "description": "armure et équipement DPS de niveau 5 pour toute les class ce trouve a l'intérieur du donjon",
     "coords": [      2616,
       2303.5]

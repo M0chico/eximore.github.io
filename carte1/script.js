@@ -105,6 +105,12 @@ const categoryIcons = {
     iconAnchor:   [16, 32],
     popupAnchor:  [0, -25]
   }),
+  donjon: L.icon({
+    iconUrl: 'icons/donjon.png',
+    iconSize:     [25, 25],
+    iconAnchor:   [16, 32],
+    popupAnchor:  [0, -25]
+  }),
   forge: L.icon({
     iconUrl: 'icons/forge.png',
     iconSize:     [48, 48],
@@ -287,4 +293,3 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.error("Erreur lors du chargement du marqueur depuis l'URL :", err);
   }
 });
-
