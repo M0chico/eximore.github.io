@@ -334,7 +334,7 @@
   {
     "name": "PNJ Sud",
     "category": "quest",
-    "description": "Inari : Full armure Ika\n\nOrin : 5 Minerais de Fer + 1 Corde d'Arc Sylvestre",
+    "description": "Inari : Full armure Ika\n\nOrin : 5 Minerais de Fer + 5 Corde d'Arc Sylvestre",
     "coords": [      318.5,
       1696.5],
     "_internalId": "PNJ Sud_296.5959777832031_549.8832168579102"
@@ -392,3 +392,4 @@
       3207.7899128527724]
   }
 ]
+
