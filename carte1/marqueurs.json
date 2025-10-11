@@ -264,12 +264,44 @@
     "_internalId": "Gilbert_290.5959777832031_83.88321685791016"
   },
   {
-    "name": "Jean et Corentin",
+    "name": "Fira",
     "category": "quest",
-    "description": "Jean : 40 Bûches de Chêne + 20 Minerais de Fer\n\nCorentin : 64 Bûches de Chêne\n\nFira : 1 éclat Magique Glacial + 3 Poussiéres d'os",
-    "coords": [      2157,
-      3165],
-    "_internalId": "Jean et Corentin_477.5959777832031_320.88321685791016"
+    "emoji": "❗",
+    "description": "Fira : 1 éclat Magique Glacial + 3 Poussiéres d'os",
+    "coords": [
+      2088.439878234468,
+      3312.83961406491
+    ]
+  },
+  {
+    "name": "Corentin",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "Corentin : 64 Bûches de Chêne",
+    "coords": [
+      2128.9217414573977,
+      3206.9409145629097
+    ]
+  },
+  {
+    "name": "Jean",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "Jean : 40 Bûches de Chêne + 20 Minerais de Fer",
+    "coords": [
+      2144.5,
+      3142.6122759494115
+    ]
+  },
+  {
+    "name": "Mine2",
+    "category": "ressource",
+    "emoji": "⛏️",
+    "description": "charbon/cuivre/fer",
+    "coords": [
+      1546.5,
+      888.9687868287277
+    ]
   },
   {
     "name": "PNJ Est",
