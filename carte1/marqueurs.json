@@ -262,7 +262,7 @@
   {
     "name": "PNJ de Virelune",
     "category": "quest",
-    "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau\n\nLuc : Tuer les monstres sur le chemin de la mine",
+    "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau",
     "coords": [      3078,
       1542],
     "_internalId": "PNJ de Virelune_267.5959777832031_207.88321685791016"
@@ -270,7 +270,7 @@
   {
     "name": "PNJ de Candelia",
     "category": "quest",
-    "description": "Yannis : 20 Bûches de bois\n\nGilmar : 10 Eclat Magique Glacial + 5 Fragments Cassé Violet\n\nTomoko : 20 Ecorce Sylvestre + 5 Racines Ancestrales",
+    "description": "Emilie : 20 épis de blé \n\nRomeo : 16 peaux de cerf \n\nPierre : 20 buche de bois \n\nYannis : 32 Bûches de bois\n\nGilmar : 10 Eclat Magique Glacial + 5 Fragments Cassé Violet\n\nTomoko : 20 Ecorce Sylvestre + 5 Racines Ancestrales",
     "coords": [      4160,
       1924],
     "_internalId": "PNJ de Candelia_316.5959777832031_59.883216857910156"
@@ -278,7 +278,7 @@
   {
     "name": "Gilbert",
     "category": "quest",
-    "description": "3 Tissus Spectral",
+    "description": "15 Tissus Spectral",
     "coords": [      4019,
       1627],
     "_internalId": "Gilbert_290.5959777832031_83.88321685791016"
@@ -390,6 +390,15 @@
     "description": "armure et équipement les plus puissant du palier 1",
     "coords": [      3552.3276919859177,
       3207.7899128527724]
+  },
+    {
+    "name": "Horace",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "12 cuirs Usées et 8 Peaux de Cerf",
+    "coords": [
+      3091,
+      2975.9442055128047
+    ]
   }
 ]
-
