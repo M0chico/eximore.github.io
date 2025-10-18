@@ -260,7 +260,7 @@
     "_internalId": "Zebulgarath_120.59597778320312_267.88321685791016"
   },
   {
-    "name": "PNJ de Virelune",
+    "name": "Juliette",
     "category": "quest",
     "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau",
     "coords": [      3078,
@@ -324,11 +324,11 @@
     ]
   },
   {
-    "name": "PNJ Est",
+    "name": "Varne",
     "category": "quest",
     "description": "Varne : 4 Fourrures de Loup + 2 Eclats de Bois Magique + 1 Os de Squelette Supérieur",
     "coords": [      736,
-      2032],
+      1982],
     "_internalId": "PNJ Est_342.5959777832031_497.88321685791016"
   },
   {
@@ -380,7 +380,7 @@
   {
     "name": "Donjon labyrinthe",
     "category": "donjon",
-    "description": "armure et équipement DPS de niveau 5 pour toute les class ce trouve a l'intérieur du donjon",
+    "description": "armure et équipement DPS de niveau 7 pour toute les class ce trouve a l'intérieur du donjon",
     "coords": [      2616,
       2303.5]
   },
@@ -399,6 +399,76 @@
     "coords": [
       3091,
       2975.9442055128047
+    ]
+  },
+  {
+    "name": "Marchand Start",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      880,
+      1702.811654653659
+    ]
+  },
+  {
+    "name": "Marchand Mizunari",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      1331.1285155836756,
+      3044.599055285738
+    ]
+  },
+  {
+    "name": "Marchand Tolbana",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      3394.75,
+      3234.4567269934905
+    ]
+  },
+  {
+    "name": "Marchand Hanaka",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      1623,
+      1421.9015166058743
+    ]
+  },
+  {
+    "name": "Marchand Vallhat",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      1948.4327355595315,
+      328.0774404700476
+    ]
+  },
+  {
+    "name": "Forge Labyrinthe",
+    "category": "forge",
+    "emoji": "⚒️",
+    "description": "",
+    "coords": [
+      2635.5457097964627,
+      2344.4943470113317
+    ]
+  },
+  {
+    "name": "Forge d'arme",
+    "category": "forge",
+    "emoji": "⚒️",
+    "description": "",
+    "coords": [
+      3537.5,
+      3183.018356794025
     ]
   }
 ]

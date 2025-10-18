@@ -31,13 +31,18 @@ let hiddenCategories = new Set();
 // Quand tu ajoutes un marqueur :
 
 document.addEventListener("DOMContentLoaded", () => {
-  const lieuBtn = document.querySelector(`.filter-btn[onclick="toggleCategory('lieu')"]`);
-  if (lieuBtn) {
-    lieuBtn.classList.remove("active");
-    lieuBtn.classList.add("inactive");
-    hiddenCategories.add("lieu");
-  }
+  const categoriesToHide = ["lieu", "shop"];
+
+  categoriesToHide.forEach(cat => {
+    const btn = document.querySelector(`.filter-btn[onclick="toggleCategory('${cat}')"]`);
+    if (btn) {
+      btn.classList.remove("active");
+      btn.classList.add("inactive");
+      hiddenCategories.add(cat);
+    }
+  });
 });
+
 
 function refreshMarkers() {
   let val = document.getElementById("search").value.toLowerCase();
@@ -114,6 +119,12 @@ const categoryIcons = {
   forge: L.icon({
     iconUrl: 'icons/forge.png',
     iconSize:     [48, 48],
+    iconAnchor:   [16, 32],
+    popupAnchor:  [0, -25]
+  }),
+  shop: L.icon({
+    iconUrl: 'icons/shop.png',
+    iconSize:     [20, 20],
     iconAnchor:   [16, 32],
     popupAnchor:  [0, -25]
   })
