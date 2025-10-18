@@ -32,6 +32,8 @@
       <option value="ressource">⛏️ Ressource</option>
       <option value="lieu">🏠 Lieu</option>
       <option value="forge">⚒️ Forge</option>
+      <option value="donjon">🏰 Donjon</option>
+      <option value="shop">🏪 Shop</option>
     </select><br>
     <textarea id="description" placeholder="Description"></textarea><br>
     <button onclick="startPlacing()">Placer sur carte</button>
@@ -93,6 +95,8 @@
         case 'ressource': return '⛏️';
         case 'lieu': return '🏠';
         case 'forge': return '⚒️';
+        case 'donjon': return '🏰';
+        case 'shop': return '🏪';
         default: return '';
       }
     }

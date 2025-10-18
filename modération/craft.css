@@ -1,0 +1,188 @@
+/* craft.css
+   Ajuste les variables ci-dessous pour aligner précisément les slots sur ton image.
+*/
+:root{
+  --bg-w: 356px;        /* largeur de Fabrication3x3.png */
+  --bg-h: 200px;        /* hauteur */
+  --grid-left: 34px;    /* distance gauche de la grille 3x3 (à ajuster) */
+  --grid-top: 36px;     /* distance haut de la grille 3x3 (à ajuster) */
+  --cell-size: 36px;    /* taille du conteneur de cellule (image item 32x32 à l'intérieur) */
+  --cell-gap: 6px;      /* espace entre cellules */
+  --result-left: 248px; /* position gauche approximative du slot résultat */
+  --result-top: 52px;   /* position top du résultat */
+  --result-size: 64px;  /* taille du slot résultat */
+  --accent: #ff9800;
+  --muted: #c7c7c7;
+  --bg: #0f1113;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, Arial, sans-serif;color:#fff}
+.crafts-wrap{
+  max-width:1100px;
+  margin:30px auto;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  padding:10px;
+}
+
+/* carte craft (fond = ton image) */
+.craft-card{
+  width: var(--bg-w);
+  height: var(--bg-h);
+  background-image: url('Fabrication3x3.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius:8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  padding:0;
+  overflow:visible;
+  user-select:none;
+}
+
+/* grille superposée (positionnée sur la partie gauche de l'image) */
+.slots-grid{
+  position: absolute;
+  left: var(--grid-left);
+  top: var(--grid-top);
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-template-rows: repeat(3, var(--cell-size));
+  gap: var(--cell-gap);
+  width: calc(3 * var(--cell-size) + 2 * var(--cell-gap));
+  height: calc(3 * var(--cell-size) + 2 * var(--cell-gap));
+  touch-action: manipulation;
+}
+
+/* slot individuel */
+.slot{
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background: rgba(0,0,0,0.18); /* léger fond pour items invisibles */
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+  cursor: default;
+}
+
+/* item 32x32 à l'intérieur du slot */
+.slot img{
+  width:32px;
+  height:32px;
+  image-rendering: pixelated; /* si art pixel, utile */
+  display:block;
+  transform: translateZ(0);
+}
+
+/* placeholder pour case vide */
+.slot .empty{
+  color:var(--muted);
+  font-size:18px;
+  opacity:0.7;
+}
+
+/* Flèche (position centrale entre grille et résultat) */
+.arrow{
+  position:absolute;
+  left: calc(var(--grid-left) + calc(3 * var(--cell-size) + 2 * var(--cell-gap)) + 8px);
+  top: calc(var(--grid-top) + calc(var(--cell-size) * 1)); /* approximatif centré */
+  font-size:36px;
+  color: var(--muted);
+  pointer-events:none;
+}
+
+/* slot résultat */
+.result-slot{
+  position:absolute;
+  left: var(--result-left);
+  top: var(--result-top);
+  width: var(--result-size);
+  height: var(--result-size);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 2px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* image résultat */
+.result-slot img{
+  width:48px;
+  height:48px;
+  image-rendering: pixelated;
+}
+
+/* empty result */
+.result-slot .empty{
+  color:var(--muted);
+  font-weight:700;
+}
+
+/* hover / focus effect */
+.slot:hover, .slot:focus, .result-slot:hover, .result-slot:focus{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* tooltip simple (au hover) */
+.slot::after, .result-slot::after{
+  content: attr(data-desc);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  bottom: calc(100% + 8px);
+  background: rgba(0,0,0,0.86);
+  padding:6px 8px;
+  border-radius:8px;
+  white-space:nowrap;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .14s ease, transform .14s ease;
+  z-index:40;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* petit triangle de tooltip */
+.slot::before, .result-slot::before{
+  content: '';
+  position:absolute;
+  left:50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  border-width:6px;
+  border-style:solid;
+  border-color: rgba(0,0,0,0.86) transparent transparent transparent;
+  opacity:0;
+  transition: opacity .14s ease;
+  z-index:40;
+}
+
+/* rendre visibles au hover/focus */
+.slot:hover::after, .slot:focus::after, .result-slot:hover::after, .result-slot:focus::after,
+.slot:hover::before, .slot:focus::before, .result-slot:hover::before, .result-slot:focus::before{
+  opacity:1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* responsive : réduit la taille globale si écran petit */
+@media (max-width:420px){
+  :root{
+    --bg-w: 320px;
+    --bg-h: 180px;
+    --cell-size: 30px;
+    --cell-gap: 5px;
+    --result-left: 220px;
+    --result-top: 46px;
+    --result-size: 56px;
+  }
+}
