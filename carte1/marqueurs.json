@@ -470,5 +470,15 @@
       3537.5,
       3183.018356794025
     ]
+  },
+  {
+    "name": "Marchand Ruine",
+    "category": "shop",
+    "emoji": "🏪",
+    "description": "",
+    "coords": [
+      320.5,
+      2752.763228957196
+    ]
   }
 ]
