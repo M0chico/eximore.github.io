@@ -38,7 +38,7 @@
   {
     "name": "Plante carnivore",
     "category": "mob",
-    "description": "Nephentes : Spore Corrumpu 50% et Fragments de Feuilles 45% \n\nPlante Dévoreuse : Spore Corrumpu 50%",
+    "description": "Nephentes : Spore Corrumpu 50% et Fragments de Feuilles 45%",
     "coords": [      1278,
       3284.1423338566196],
     "_internalId": "Plante carnivore_480.7424290974934_426.9666659832"
@@ -62,7 +62,7 @@
   {
     "name": "Squelette",
     "category": "mob",
-    "description": "Squelette Epéiste : Os de Squelette 45% , Ame des ruines 40% , Poussiére d'os 35% et épée osseuse 5%\n\nSquelette Halbardier : Os de squelette 45% , Ame des ruines 40% et Poussiére d'os 35%\n\nArcher squelette : Ame des ruines 40% , os de squelette renforcé 30% et Poussiére d'os 20%\n\nTank squelette : Os de squelette renforcé 40% , Poussiére d'os 30% et Tissu Maudit 50%\n\nMage squelette : NO DATA\n\nNarax(Boss) : Coeur Putréfié 70%\n\nNasgul(boss) : Eclat du sabot maudit 1% et Morceau de Criniére spectrale 2.5%",
+    "description": "Squelette Epéiste : Os de Squelette 45% , Ame des ruines 40% , Poussiére d'os 35% et épée osseuse 5%\n\nSquelette Halbardier : Os de squelette 45% , Ame des ruines 40% et Poussiére d'os 35%\n\nArcher squelette : Ame des ruines 40% , os de squelette renforcé 30% et Poussiére d'os 20%\n\nTank squelette : Os de squelette renforcé 40% , Poussiére d'os 30% et Tissu Maudit 50%\n\nMage squelette : Tissu Maudit 40%\n\nNarax(Boss) : Coeur Putréfié 70%\n\nNasgul(boss) : Eclat du sabot maudit 1% et Morceau de Criniére spectrale 2.5%",
     "coords": [      605.9250073666744,
       2728.947201862985],
     "_internalId": "Squelette_414.9090957641601_510.29999931653333"
@@ -260,9 +260,9 @@
     "_internalId": "Zebulgarath_120.59597778320312_267.88321685791016"
   },
   {
-    "name": "Juliette",
+    "name": "Virelune",
     "category": "quest",
-    "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau",
+    "description": "Juliette : 16 Bûches de Chêne + 16 Bûches de Bouleau\n\n Monique : tué 10 requin \n\n Sam : tué 20 araigné",
     "coords": [      3078,
       1542],
     "_internalId": "PNJ de Virelune_267.5959777832031_207.88321685791016"
@@ -342,7 +342,7 @@
   {
     "name": "PNJ Ouest",
     "category": "quest",
-    "description": "Rikyu : 25 Fragments de Feuilles + 8 Fleur d'Allium\n\nMeiko : 5 Tissus d'Araignée + 3 Cuir Usé\n\nSaria : 50 Gelées de Slime + 10 Minerais de Fer",
+    "description": "Rikyu : 25 Fragments de Feuilles + 8 Fleur d'Allium\n\nMeiko : 5 Tissus d'Araignée + 3 Cuir Usé\n\nSaria : 50 Gelées de Slime + 10 Minerais de Fer\n\nBunta : 5 éclats de bois magique + 5 Poussiéres d'os + 3 Noyau de Slime",
     "coords": [      738,
       1382],
     "_internalId": "PNJ Ouest_250.59597778320312_494.88321685791016"
@@ -358,7 +358,7 @@
   {
     "name": "Poisson carnivore",
     "category": "mob",
-    "description": "Poisson Requin : carapace de requin 70% \n\nSea Void : coeur du truc No DATA",
+    "description": "Poisson Requin : carapace de requin 70% \n\nSea Void : coeur 100%",
     "coords": [      3027,
       1390],
     "_internalId": "Poisson carnivore_238.59597778320312_215.88321685791016"
@@ -479,6 +479,36 @@
     "coords": [
       320.5,
       2752.763228957196
+    ]
+  },
+  {
+    "name": "Luc",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "3 pioche",
+    "coords": [
+      3187.637369588956,
+      1539.0279232174355
+    ]
+  },
+  {
+    "name": "Haruto",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "25 carapace de requin et 30 gelées de slime",
+    "coords": [
+      2919,
+      1795.06671957026
+    ]
+  },
+  {
+    "name": "Mlila",
+    "category": "quest",
+    "emoji": "❗",
+    "description": "15 Fragments de Feuilles 2 Mycélium Magique",
+    "coords": [
+      848.5683140690718,
+      2123.0627789600526
     ]
   }
 ]
